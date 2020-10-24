@@ -1,8 +1,8 @@
 # CECS343
 
 
-<java>
-          
+
+    ```java      
     Database.getDatabase();  // gets singleton static Database
     
     Owner evan = new Owner();
@@ -18,5 +18,5 @@
           
     ArrayList<Owner> owners =  Database.getDatabase().selectOwner();
     ArrayList<Product> products =  Database.getDatabase().selectProduct();
-          
-</java>
+    ```  
+
