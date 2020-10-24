@@ -2,7 +2,7 @@
 
 
 
-    ```java      
+    ```javascript      
     Database.getDatabase();  // gets singleton static Database
     
     Owner evan = new Owner();
