@@ -1,7 +1,7 @@
 # CECS343
 
 
-    <p>
+
     Database.getDatabase();  // gets singleton static Database
     
     Owner evan = new Owner();
@@ -17,4 +17,3 @@
           
     ArrayList<Owner> owners =  Database.getDatabase().selectOwner();
     ArrayList<Product> products =  Database.getDatabase().selectProduct();
-    </p>
