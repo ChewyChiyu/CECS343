@@ -1,7 +1,7 @@
 # CECS343
 
 
-'''java
+<java>
           
     Database.getDatabase();  // gets singleton static Database
     
@@ -19,4 +19,4 @@
     ArrayList<Owner> owners =  Database.getDatabase().selectOwner();
     ArrayList<Product> products =  Database.getDatabase().selectProduct();
           
-'''
+</java>
