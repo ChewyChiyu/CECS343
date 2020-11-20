@@ -11,16 +11,10 @@ public class Owner{
 	public String getName(){ return name; }
 	public String getPassword(){ return password; }
 
-	public String toString(){ 
-		return "name: " + name + " password: " + password; 
-	}
+	public String toString(){ return "name: " + name + " password: " + password; }
 
-	public String getData(){
-		return name + "," + password;	
-	}
+	public String getData(){ return name + "," + password;	}
 
-	public boolean equals(Owner o){
-	 return name.equals(o.name)&&password.equals(o.password); 
-	}
+	public boolean equals(Owner o){ return name.equals(o.name)&&password.equals(o.password); }
 
 }

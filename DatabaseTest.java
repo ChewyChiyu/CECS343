@@ -7,13 +7,14 @@ public class DatabaseTest{
 	DatabaseTest(){	
 
 
-		Owner Kevin = new Owner("Patrick Star","Password1");
-		Owner Evan = new Owner("SPonge Star","Password1");
-		Database.getDatabase().delete(Evan);
-		//Database.getDatabase().delete(Kevin);
+		Salesperson evan = new Salesperson("Evan",1,2,3);
+		Salesperson chen = new Salesperson("Chen",1,2,3);
 
-		System.out.println(Database.getDatabase().selectOwner());
+		Database.getDatabase().add(evan);
+		Database.getDatabase().delete(chen);
 
+
+		System.out.println(Database.getDatabase().selectSalesperson());
 	}
 
 
