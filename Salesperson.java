@@ -31,7 +31,7 @@ public class Salesperson{
 
 	public String getData(){ return name + "," + commission +  "," + totalCommission + "," + totalSales;	}
 
-	public boolean equals(Salesperson o){ return name.equals(o.name)&&commission==o.commission&&totalCommission==o.totalCommission&&totalSales==o.totalSales; }
+	public boolean equals(Salesperson o){ return name.equals(o.name); }
 
 }
 

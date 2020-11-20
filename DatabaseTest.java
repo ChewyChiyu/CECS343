@@ -7,14 +7,16 @@ public class DatabaseTest{
 	DatabaseTest(){	
 
 
-		Salesperson evan = new Salesperson("Evan",1,2,3);
-		Salesperson chen = new Salesperson("Chen",1,2,3);
+		Product evan = new Product("Evan",1,2,3,1,1,1,1,1.0);
+		Product chen = new Product("Chen",1,2,3,1,1,1,1,1.0);
 
+
+		//System.out.println(evan + " " + chen);
 		Database.getDatabase().add(evan);
-		Database.getDatabase().delete(chen);
+		 //Database.getDatabase().delete(evan);
 
 
-		System.out.println(Database.getDatabase().selectSalesperson());
+		System.out.println(Database.getDatabase().selectProduct());
 	}
 
 

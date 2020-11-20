@@ -7,7 +7,7 @@ public final class Database{
 
 	
 
-	private File ownerFile, salespersonFile;
+	private File ownerFile, salespersonFile,  productFile;
 
 
 	private Database(){
@@ -23,6 +23,9 @@ public final class Database{
 
 			salespersonFile = new File("Salesperson.txt");
 			salespersonFile.createNewFile();
+
+			productFile = new File("Product.txt");
+			productFile.createNewFile();
 
 
 		}catch(Exception e){ e.printStackTrace(); }
@@ -71,18 +74,21 @@ public final class Database{
 	public File getFile(Object o){
 		if(o instanceof Owner) return ownerFile;
 		else if (o instanceof Salesperson) return salespersonFile;
+		else if (o instanceof Product) return productFile;
 		return null;
 	}
 
 	public String getData(Object o){
 		if(o instanceof Owner ) return ((Owner)o).getData();
-		if(o instanceof Salesperson ) return ((Salesperson)o).getData();
+		else if(o instanceof Salesperson ) return ((Salesperson)o).getData();
+		else if(o instanceof Product ) return ((Product)o).getData();
 		return null;
 	}
 
 	public boolean equals(Object a, Object b){
 		if(a instanceof Owner){ return ((Owner)a).equals((Owner)b); }
-		if(a instanceof Salesperson){ return ((Salesperson)a).equals((Salesperson)b); }
+		else if(a instanceof Salesperson){ return ((Salesperson)a).equals((Salesperson)b); }
+		else if(a instanceof Product){ return ((Product)a).equals((Product)b); }
 		return false;
 	}
 
@@ -96,6 +102,10 @@ public final class Database{
 		else if(o instanceof Salesperson){
 			ArrayList<Salesperson> salespersons = selectSalesperson();
 			for(Salesperson o2 : salespersons) select.add(o2);
+		}
+		else if(o instanceof Product){
+			ArrayList<Product> products = selectProduct();
+			for(Product o2 : products) select.add(o2);
 		}
 		return select;
 
@@ -139,6 +149,27 @@ public final class Database{
             e.printStackTrace();
         }
         return salespersonEntityList;
+   	}
+
+
+   	ArrayList<Product> selectProduct(){
+		ArrayList<Product> productEntityList = new ArrayList<Product>();
+		 try {
+            FileReader reader = new FileReader(productFile);
+            BufferedReader bufferedReader = new BufferedReader(reader);
+ 
+            String line;
+ 
+            while ((line = bufferedReader.readLine()) != null) {
+                 String[] data = line.split(",");
+                 productEntityList.add(new Product(data[0],Integer.parseInt(data[1]),Integer.parseInt(data[2]),Integer.parseInt(data[3]),Integer.parseInt(data[4]),Integer.parseInt(data[5]),Integer.parseInt(data[6]),Integer.parseInt(data[7]),Float.parseFloat(data[8])));
+            }
+            reader.close();
+ 
+       	 } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return productEntityList;
    	}
 
 
