@@ -7,7 +7,7 @@ public final class Database{
 
 	
 
-	private File ownerFile, salespersonFile,  productFile;
+	private File ownerFile, salespersonFile,  productFile, invoiceFile;
 
 
 	private Database(){
@@ -26,6 +26,9 @@ public final class Database{
 
 			productFile = new File("Product.txt");
 			productFile.createNewFile();
+
+			invoiceFile = new File("Invoice.txt");
+			invoiceFile.createNewFile();
 
 
 		}catch(Exception e){ e.printStackTrace(); }
@@ -75,6 +78,7 @@ public final class Database{
 		if(o instanceof Owner) return ownerFile;
 		else if (o instanceof Salesperson) return salespersonFile;
 		else if (o instanceof Product) return productFile;
+		else if (o instanceof Invoice) return invoiceFile;
 		return null;
 	}
 
@@ -82,6 +86,7 @@ public final class Database{
 		if(o instanceof Owner ) return ((Owner)o).getData();
 		else if(o instanceof Salesperson ) return ((Salesperson)o).getData();
 		else if(o instanceof Product ) return ((Product)o).getData();
+		else if(o instanceof Invoice ) return ((Invoice)o).getData();
 		return null;
 	}
 
@@ -89,6 +94,7 @@ public final class Database{
 		if(a instanceof Owner){ return ((Owner)a).equals((Owner)b); }
 		else if(a instanceof Salesperson){ return ((Salesperson)a).equals((Salesperson)b); }
 		else if(a instanceof Product){ return ((Product)a).equals((Product)b); }
+		else if(a instanceof Invoice){ return ((Invoice)a).equals((Invoice)b); }
 		return false;
 	}
 
@@ -106,6 +112,10 @@ public final class Database{
 		else if(o instanceof Product){
 			ArrayList<Product> products = selectProduct();
 			for(Product o2 : products) select.add(o2);
+		}
+		else if(o instanceof Invoice){
+			ArrayList<Invoice> invoices = selectInvoice();
+			for(Invoice o2 : invoices) select.add(o2);
 		}
 		return select;
 
@@ -170,6 +180,26 @@ public final class Database{
             e.printStackTrace();
         }
         return productEntityList;
+   	}
+
+   		ArrayList<Invoice> selectInvoice(){
+		ArrayList<Invoice> invoiceEntityList = new ArrayList<Invoice>();
+		 try {
+            FileReader reader = new FileReader(invoiceFile);
+            BufferedReader bufferedReader = new BufferedReader(reader);
+ 
+            String line;
+ 
+            while ((line = bufferedReader.readLine()) != null) {
+                 String[] data = line.split(",");
+                 invoiceEntityList.add(new Invoice(data[0],data[1],data[2],data[3],Integer.parseInt(data[4]),Integer.parseInt(data[5]),Integer.parseInt(data[6]),Integer.parseInt(data[7]),Integer.parseInt(data[8]),Integer.parseInt(data[9]),Integer.parseInt(data[10])));
+            }
+            reader.close();
+ 
+       	 } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return invoiceEntityList;
    	}
 
 
