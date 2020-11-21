@@ -7,7 +7,7 @@ public final class Database{
 
 	
 
-	private File ownerFile, salespersonFile,  productFile, invoiceFile;
+	private File ownerFile, salespersonFile,  productFile, invoiceFile, warehouseFile;
 
 
 	private Database(){
@@ -29,6 +29,9 @@ public final class Database{
 
 			invoiceFile = new File("Invoice.txt");
 			invoiceFile.createNewFile();
+
+			warehouseFile = new File("Warehouse.txt");
+			warehouseFile.createNewFile();
 
 
 		}catch(Exception e){ e.printStackTrace(); }
@@ -79,6 +82,7 @@ public final class Database{
 		else if (o instanceof Salesperson) return salespersonFile;
 		else if (o instanceof Product) return productFile;
 		else if (o instanceof Invoice) return invoiceFile;
+		else if (o instanceof Warehouse) return warehouseFile;
 		return null;
 	}
 
@@ -87,6 +91,7 @@ public final class Database{
 		else if(o instanceof Salesperson ) return ((Salesperson)o).getData();
 		else if(o instanceof Product ) return ((Product)o).getData();
 		else if(o instanceof Invoice ) return ((Invoice)o).getData();
+		else if(o instanceof Warehouse ) return ((Warehouse)o).getData();
 		return null;
 	}
 
@@ -95,6 +100,7 @@ public final class Database{
 		else if(a instanceof Salesperson){ return ((Salesperson)a).equals((Salesperson)b); }
 		else if(a instanceof Product){ return ((Product)a).equals((Product)b); }
 		else if(a instanceof Invoice){ return ((Invoice)a).equals((Invoice)b); }
+		else if(a instanceof Warehouse){ return ((Warehouse)a).equals((Warehouse)b); }
 		return false;
 	}
 
@@ -116,6 +122,10 @@ public final class Database{
 		else if(o instanceof Invoice){
 			ArrayList<Invoice> invoices = selectInvoice();
 			for(Invoice o2 : invoices) select.add(o2);
+		}
+		else if(o instanceof Warehouse){
+			ArrayList<Warehouse> warehouses = selectWarehouse();
+			for(Warehouse o2 : warehouses) select.add(o2);
 		}
 		return select;
 
@@ -200,6 +210,30 @@ public final class Database{
             e.printStackTrace();
         }
         return invoiceEntityList;
+   	}
+
+   	ArrayList<Warehouse> selectWarehouse(){
+		ArrayList<Warehouse> warehouseEntityList = new ArrayList<Warehouse>();
+		 try {
+            FileReader reader = new FileReader(warehouseFile);
+            BufferedReader bufferedReader = new BufferedReader(reader);
+ 
+            String line;
+ 
+            while ((line = bufferedReader.readLine()) != null) {
+                 String[] data = line.split(",");
+                 List<String> products = new ArrayList<String>();
+                 for(int index = 1; index < data.length; index++){
+                 	 products.add(data[index]);
+                 }
+                 warehouseEntityList.add(new Warehouse(data[0],products));
+            }
+            reader.close();
+ 
+       	 } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return warehouseEntityList;
    	}
 
 

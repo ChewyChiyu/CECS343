@@ -1,3 +1,4 @@
+import java.util.*;
 public class DatabaseTest{
 
 	public static void main(String[] args){
@@ -7,17 +8,25 @@ public class DatabaseTest{
 	DatabaseTest(){	
 
 
-		Invoice evan = new Invoice("A","B","C","D",1,1,1,1,1,1,1);
-		Invoice chen = new Invoice("Aadsf","B","C","D",1,1,1,1,1,1,1);
+		List<String> productName = new ArrayList<String>();
+		productName.add("E");
+		productName.add("F");
+		productName.add("G");
+		productName.add("H");
+
+		Warehouse a = new Warehouse("number 1",productName);
+		Warehouse b = new Warehouse("number 2",productName);
+
+		//System.out.println(a.getData());
 
 		//System.out.println(evan.equals(chen));
 
 		//System.out.println(evan + " " + chen);
-		//Database.getDatabase().add(chen);
-		 Database.getDatabase().delete(evan);
+		Database.getDatabase().delete(a);
+		// Database.getDatabase().delete(evan);
 
 
-		System.out.println(Database.getDatabase().selectInvoice());
+		System.out.println(Database.getDatabase().selectWarehouse());
 	}
 
 
