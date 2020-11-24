@@ -5,8 +5,8 @@ public class Main {
 	public static void main(String[] args) {
 		//System.out.println("Hello please enter your user info");
 		boolean accountCreation = true;
-		boolean accountMenu = false;
-		boolean access = false;
+		boolean accountMenu = true;
+		//boolean access = false;
 		
 		if (accountCreation == false) {
 			System.out.println("Hello please enter your user info");
@@ -19,19 +19,19 @@ public class Main {
 		//}
 		else {
 			System.out.println("Enter password");
-			while (accountMenu == false) {
+			while (accountMenu) {
 				int password = CheckInput.getInt();
 				int temp = loginAccount(password);
 				if (temp == 1) {
-					accountMenu = true;
-					access = true;
+					accountMenu = false;
+					//access = true;
 				}
 			}
 			boolean mainMenu = true;
 			boolean invoiceMenu = true;
 			while (mainMenu) {
 				System.out.print( "What do you want to do? \n1. Invoices \n2. Warehouses \n3. Products \n4. SalesPerson \n5. Change Password \n6. Exit \n" );
-			    int menuChoice = CheckInput.getIntRange(1, 5);
+			    int menuChoice = CheckInput.getIntRange(1, 6);
 			    if (menuChoice == 1){
 			    	while(invoiceMenu) {
 			    		System.out.println("What do you want to do? \n1. Create Invoice \n2. Edit Invoice \n3. Go back \n");
@@ -44,6 +44,9 @@ public class Main {
 			    			System.out.println("Which invoice do you want to edit?");
 			    			//Do the editing of the Invoice
 			    		}
+			    		if(invoiceMenuChoice == 3) {
+			    			invoiceMenu = false;
+			    		}
 			    	}
 			    }
 			    if (menuChoice == 2){
@@ -54,7 +57,7 @@ public class Main {
 			    	System.out.println("1. Add new Product \n2. Edit Product Quantity \n3. Display all products \n4. Go back \n ");
 			    }
 
-			    if (menuChoice == 4){
+			    if (menuChoice == 6){
 			        mainMenu = false;
 			        System.out.println("Quitting...");
 			    }
