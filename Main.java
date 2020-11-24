@@ -71,7 +71,29 @@ public class Main {
 			    }
 			    
 			    if (menuChoice == 3) {
-			    	System.out.println("1. Add new Product \n2. Edit Product Quantity \n3. Display all products \n4. Go back \n ");
+			    	boolean productMenu = true;
+			    	while(productMenu) {
+			    		System.out.println("1. Add new Product \n2. Edit Product Edit \n3. Display all products \n4. Go back \n ");
+			    		int productMenuChoice = CheckInput.getIntRange(1, 4);
+			    		if(productMenuChoice == 1) {
+			    			System.out.println("Fill details of new product");
+			    			//Calls product create function and user fills product details
+			    		}
+			    		
+			    		if(productMenuChoice == 2) {
+			    			System.out.println("Which product do you want to edit?");
+			    			//Chooses product and changes products details. Submenu to be developed
+			    		}
+			    		
+			    		if(productMenuChoice == 3) {
+			    			System.out.println("Displaying all products");
+			    			//Displays all products in the database
+			    		}
+			    		
+			    		if(productMenuChoice == 4) {
+			    			productMenu = false;
+			    	}
+			    	
 			    }
 			    
 			    if (menuChoice == 4) {
