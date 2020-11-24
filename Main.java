@@ -28,18 +28,33 @@ public class Main {
 				}
 			}
 			boolean mainMenu = true;
+			boolean invoiceMenu = true;
 			while (mainMenu) {
-				System.out.print( "What do you want to do? \n1. Invoices \n2. Warehouses \n3. Exit \n" );
+				System.out.print( "What do you want to do? \n1. Invoices \n2. Warehouses \n3. Products \n4. SalesPerson \n5. Change Password \n6. Exit \n" );
 			    int menuChoice = CheckInput.getIntRange(1, 5);
 			    if (menuChoice == 1){
-			    	System.out.println("What do you want to do? \n1. Create Invoice \n2. Edit Invoice \n3. Go back \n");
-			  
+			    	while(invoiceMenu) {
+			    		System.out.println("What do you want to do? \n1. Create Invoice \n2. Edit Invoice \n3. Go back \n");
+			    		int invoiceMenuChoice = CheckInput.getIntRange(1,3);
+			    		if(invoiceMenuChoice == 1) {
+			    			System.out.println("Opening new inovice...");
+			    			//Do the filling of invoice
+			    		}
+			    		if(invoiceMenuChoice == 2) {
+			    			System.out.println("Which invoice do you want to edit?");
+			    			//Do the editing of the Invoice
+			    		}
+			    	}
 			    }
 			    if (menuChoice == 2){
 			    	System.out.println("What do you want to do? \n1. Add Warehouse \n2. Edit Warehouse Stock \n3. Go back \n");
 			    }
+			    
+			    if (menuChoice == 3) {
+			    	System.out.println("1. Add new Product \n2. Edit Product Quantity \n3. Display all products \n4. Go back \n ");
+			    }
 
-			    if (menuChoice == 3){
+			    if (menuChoice == 4){
 			        mainMenu = false;
 			        System.out.println("Quitting...");
 			    }
