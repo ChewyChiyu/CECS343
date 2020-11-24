@@ -36,7 +36,7 @@ public class Main {
 			    if (menuChoice == 1){
 			    	boolean invoiceMenu = true;
 			    	while(invoiceMenu) {
-			    		System.out.println("What do you want to do? \n1. Create Invoice \n2. Edit Invoice \n3. Go back \n");
+			    		System.out.print("What do you want to do? \n1. Create Invoice \n2. Edit Invoice \n3. Go back \n");
 			    		int invoiceMenuChoice = CheckInput.getIntRange(1,3);
 			    		if(invoiceMenuChoice == 1) {
 			    			System.out.println("Opening new inovice...");
@@ -54,7 +54,7 @@ public class Main {
 			    if (menuChoice == 2){
 			    	boolean warehouseMenu = true;
 			    	while(warehouseMenu) {
-			    		System.out.println("What do you want to do? \n1. Add Warehouse \n2. Remove Warehouse \n3. Go back \n");
+			    		System.out.print("What do you want to do? \n1. Add Warehouse \n2. Remove Warehouse \n3. Go back \n");
 			    		int warehouseMenuChoice = CheckInput.getIntRange(1,3);
 			    		if(warehouseMenuChoice == 1) {
 			    			System.out.println("Adding new warehouse...");
@@ -73,7 +73,7 @@ public class Main {
 			    if (menuChoice == 3) {
 			    	boolean productMenu = true;
 			    	while(productMenu) {
-			    		System.out.println("1. Add new Product \n2. Edit Product Edit \n3. Display all products \n4. Go back \n ");
+			    		System.out.print("1. Add new Product \n2. Edit Product Edit \n3. Display all products \n4. Go back \n ");
 			    		int productMenuChoice = CheckInput.getIntRange(1, 4);
 			    		if(productMenuChoice == 1) {
 			    			System.out.println("Fill details of new product");
@@ -92,6 +92,7 @@ public class Main {
 			    		
 			    		if(productMenuChoice == 4) {
 			    			productMenu = false;
+			    		}
 			    	}
 			    	
 			    }
