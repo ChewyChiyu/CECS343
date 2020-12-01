@@ -39,7 +39,7 @@ public class Main {
 			    		System.out.print("What do you want to do? \n1. Create Invoice \n2. Edit Invoice \n3. Display Invoices\n4. Go back \n");
 			    		int invoiceMenuChoice = CheckInput.getIntRange(1,4);
 			    		if(invoiceMenuChoice == 1) {
-			    			System.out.println("Creating new inovice...");
+			    			System.out.println("Creating new inovice...\n");
 			    			//Implementation of the filling of invoice
 			    		}
 			    		if(invoiceMenuChoice == 2) {
@@ -52,10 +52,10 @@ public class Main {
 			    				System.out.println("1. Display open invoices \n2. Display closed invoices \n3. Go back");
 			    				int displayInvoiceChoice = CheckInput.getIntRange(1, 3);
 			    				if (displayInvoiceChoice == 1) {
-			    					System.out.println("Displaying open invoices");
+			    					System.out.println("Displaying open invoices\n");
 			    				}
 			    				if (displayInvoiceChoice == 2) {
-			    					System.out.println("Displaying closed inovices");
+			    					System.out.println("Displaying closed inovices\n");
 			    					
 			    				}
 			    				if (displayInvoiceChoice == 3) {
@@ -76,7 +76,7 @@ public class Main {
 			    		System.out.print("What do you want to do? \n1. Add Warehouse \n2. Remove Warehouse \n3. Go back \n");
 			    		int warehouseMenuChoice = CheckInput.getIntRange(1,3);
 			    		if(warehouseMenuChoice == 1) {
-			    			System.out.println("Adding new warehouse...");
+			    			System.out.println("Adding new warehouse...\n");
 			    			//Implementation to add warehouse here
 			    		}
 			    		if(warehouseMenuChoice == 2) {
@@ -107,8 +107,8 @@ public class Main {
 			    		if(productMenuChoice == 3) {
 			    			boolean productDisplayMenu = true;
 			    			while (productDisplayMenu == true) {
-			    				System.out.println("1. Display stock of products \n2. Display products 5 or fewer \n3. Display products quantities by warehouse \n4. Go back \n");
-			    				int productDisplayChoice = CheckInput.getIntRange(1, 4);
+			    				System.out.print("1. Display stock of products \n2. Display products 5 or fewer \n3. Display products quantities by warehouse \n4. Display product information \n5. Go back \n");
+			    				int productDisplayChoice = CheckInput.getIntRange(1, 5);
 			    				
 			    				if(productDisplayChoice == 1) {
 					    			System.out.println("Displaying stock of products...\n");
@@ -126,6 +126,11 @@ public class Main {
 					    		}
 					    		
 					    		if(productDisplayChoice == 4) {
+					    			System.out.println("Which product information do you want to see? ");
+					    			//Implementation for displaying product information
+					    		}
+					    		
+					    		if(productDisplayChoice == 5) {
 					    			productDisplayMenu = false;
 					    		}
 			    			}
