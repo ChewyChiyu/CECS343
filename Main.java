@@ -36,8 +36,8 @@ public class Main {
 			    if (menuChoice == 1){
 			    	boolean invoiceMenu = true;
 			    	while(invoiceMenu) {
-			    		System.out.print("What do you want to do? \n1. Create Invoice \n2. Edit Invoice \n3. Go back \n");
-			    		int invoiceMenuChoice = CheckInput.getIntRange(1,3);
+			    		System.out.print("What do you want to do? \n1. Create Invoice \n2. Edit Invoice \n3. Display Invoices\n4. Go back \n");
+			    		int invoiceMenuChoice = CheckInput.getIntRange(1,4);
 			    		if(invoiceMenuChoice == 1) {
 			    			System.out.println("Creating new inovice...");
 			    			//Implementation of the filling of invoice
@@ -47,6 +47,25 @@ public class Main {
 			    			//Implementation to display invoices and edit them
 			    		}
 			    		if(invoiceMenuChoice == 3) {
+			    			boolean displayInvoiceMenu = true;
+			    			while(displayInvoiceMenu) {
+			    				System.out.println("1. Display open invoices \n2. Display closed invoices \n3. Go back");
+			    				int displayInvoiceChoice = CheckInput.getIntRange(1, 3);
+			    				if (displayInvoiceChoice == 1) {
+			    					System.out.println("Displaying open invoices");
+			    				}
+			    				if (displayInvoiceChoice == 2) {
+			    					System.out.println("Displaying closed inovices");
+			    					
+			    				}
+			    				if (displayInvoiceChoice == 3) {
+			    					displayInvoiceMenu = false;
+			    					
+			    				}
+			    			}
+			    		}
+			    		
+			    		if(invoiceMenuChoice == 4) {
 			    			invoiceMenu = false;
 			    		}
 			    	}
