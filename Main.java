@@ -39,12 +39,12 @@ public class Main {
 			    		System.out.print("What do you want to do? \n1. Create Invoice \n2. Edit Invoice \n3. Go back \n");
 			    		int invoiceMenuChoice = CheckInput.getIntRange(1,3);
 			    		if(invoiceMenuChoice == 1) {
-			    			System.out.println("Opening new inovice...");
-			    			//Do the filling of invoice
+			    			System.out.println("Creating new inovice...");
+			    			//Implementation of the filling of invoice
 			    		}
 			    		if(invoiceMenuChoice == 2) {
 			    			System.out.println("Which invoice do you want to edit?");
-			    			//Do the editing of the Invoice
+			    			//Implementation to display invoices and edit them
 			    		}
 			    		if(invoiceMenuChoice == 3) {
 			    			invoiceMenu = false;
@@ -58,11 +58,11 @@ public class Main {
 			    		int warehouseMenuChoice = CheckInput.getIntRange(1,3);
 			    		if(warehouseMenuChoice == 1) {
 			    			System.out.println("Adding new warehouse...");
-			    			//Add warehouse
+			    			//Implementation to add warehouse here
 			    		}
 			    		if(warehouseMenuChoice == 2) {
 			    			System.out.println("Which warehouse do you want to remove?");
-			    			//Remove warehouse
+			    			//Implementation to remove warehouse here
 			    		}
 			    		if(warehouseMenuChoice == 3) {
 			    			warehouseMenu = false;
@@ -73,7 +73,7 @@ public class Main {
 			    if (menuChoice == 3) {
 			    	boolean productMenu = true;
 			    	while(productMenu) {
-			    		System.out.print("1. Add new Product \n2. Edit Product Edit \n3. Display all products \n4. Go back \n ");
+			    		System.out.print("1. Add new Product \n2. Edit Product Edit \n3. Display for products \n4. Go back \n");
 			    		int productMenuChoice = CheckInput.getIntRange(1, 4);
 			    		if(productMenuChoice == 1) {
 			    			System.out.println("Fill details of new product");
@@ -86,8 +86,30 @@ public class Main {
 			    		}
 			    		
 			    		if(productMenuChoice == 3) {
-			    			System.out.println("Displaying all products");
-			    			//Displays all products in the database
+			    			boolean productDisplayMenu = true;
+			    			while (productDisplayMenu == true) {
+			    				System.out.println("1. Display stock of products \n2. Display products 5 or fewer \n3. Display products quantities by warehouse \n4. Go back \n");
+			    				int productDisplayChoice = CheckInput.getIntRange(1, 4);
+			    				
+			    				if(productDisplayChoice == 1) {
+					    			System.out.println("Displaying stock of products...\n");
+					    			//Display stock
+					    		}
+			    				
+					    		if(productDisplayChoice == 2) {
+					    			System.out.println("Displaying stocks 5 or fewer \n");
+					    			//Display products with stock 5 or fewer
+					    		}
+					    		
+					    		if(productDisplayChoice == 3) {
+						    		System.out.println("Displaying products quantities by warehouses \n");
+						    		//Display products by stock by warehouses
+					    		}
+					    		
+					    		if(productDisplayChoice == 4) {
+					    			productDisplayMenu = false;
+					    		}
+			    			}
 			    		}
 			    		
 			    		if(productMenuChoice == 4) {
@@ -98,11 +120,53 @@ public class Main {
 			    }
 			    
 			    if (menuChoice == 4) {
-			    	System.out.println("1. Add new Salesperson \n2. Remove Salesperson \n3. Go back \n ");
+			    	//System.out.println("1. Add new Salesperson \n2. Remove Salesperson \n3. Display Total Sales and Commissions  \n4. Change commission rates for salesperson \n5. Go back\n");
+			    	boolean salespersonMenu = true;
+	    			while (salespersonMenu == true) {
+				    	System.out.print("1. Add new Salesperson \n2. Remove Salesperson \n3. Display Total Sales and Commissions  \n4. Change commission rates for salesperson \n5. Go back\n");
+	    				//System.out.println("Adding new Salesperson \n");
+	    				int salesPersonMenuChoice = CheckInput.getIntRange(1, 4);
+	    				
+	    				if(salesPersonMenuChoice == 1) {
+			    			System.out.println("Adding new Salesperson\n");
+			    			//Implementation to add salesperson
+			    		}
+	    				
+			    		if(salesPersonMenuChoice == 2) {
+			    			System.out.println("Which saleperson do you want to remove? \n");
+			    			//Implementation to Remove salesperson
+			    		}
+			    		
+			    		if(salesPersonMenuChoice == 3) {
+				    		System.out.println("Displaying Total Sales and Commissions \n");
+				    		//Implementation to Display all sales and commissions associated to each sale
+			    		}
+			    		
+			    		if(salesPersonMenuChoice == 4) {
+				    		System.out.println("Which salesperson do you want to change commission rate for? \n");
+				    		//Implementation to change commission rate for salesperson
+			    		}
+			    		
+			    		if(salesPersonMenuChoice == 5) {
+			    			salespersonMenu = false;
+			    		}
+	    			}
 			    }
 			    
 			    if (menuChoice == 5) {
-			    	System.out.println("1. Change password \n2. Go back \n ");
+			    	boolean changePasswordMenu = true;
+			    	while (changePasswordMenu == true) {
+			    		System.out.print("1. Change password \n2. Go back \n ");
+			    		int changePasswordChoice = CheckInput.getIntRange(1, 2);
+			    		if (changePasswordChoice == 1) {
+			    			System.out.println("Changing password");
+			    			//Implementation to change password
+			    		}
+			    		if (changePasswordChoice == 2) {
+			    			changePasswordMenu = false;
+			    		}
+			    	}
+			    	
 			    }
 
 			    if (menuChoice == 6){
