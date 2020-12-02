@@ -56,15 +56,18 @@ public final class Database{
 
 	}
 
-	void delete(Object delete){
-
+	boolean delete(Object delete){
+	boolean success = false;
 	ArrayList<Object> objects = selectObject(delete);
 		try {
             FileWriter writer = new FileWriter(getFile(delete));
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
  			for(Object o : objects){
 
- 				 if(equals(o,delete)) continue;
+ 				 if(equals(o,delete)){
+ 				 	 success = true;
+ 				 	 continue;
+ 				 }
  				 bufferedWriter.write(getData(o));
            		 bufferedWriter.newLine();
  			}
@@ -72,7 +75,7 @@ public final class Database{
         } catch (IOException e) {
             e.printStackTrace();
         }
-		
+		return success; 
 
 	}
 

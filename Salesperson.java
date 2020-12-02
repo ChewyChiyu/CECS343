@@ -26,11 +26,7 @@ public class Salesperson{
 
 
 	public String toString(){ return "name: " + name + " commission: " + commission; }
-
-
-
 	public String getData(){ return name + "," + commission +  "," + totalCommission + "," + totalSales;	}
-
 	public boolean equals(Salesperson o){ return name.equals(o.name); }
 
 }
