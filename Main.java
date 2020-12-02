@@ -190,7 +190,7 @@ public class Main {
 	    			while (salespersonMenu == true) {
 				    	System.out.print("1. Add new Salesperson \n2. Remove Salesperson \n3. Display Total Sales and Commissions  \n4. Change commission rates for salesperson \n5. Go back\n");
 	    				//System.out.println("Adding new Salesperson \n");
-	    				int salesPersonMenuChoice = CheckInput.getIntRange(1, 4);
+	    				int salesPersonMenuChoice = CheckInput.getIntRange(1, 5);
 	    				
 	    				if(salesPersonMenuChoice == 1) {
 			    			System.out.println("Adding new Salesperson\n");
