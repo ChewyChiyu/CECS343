@@ -154,11 +154,28 @@ public class Main {
 	    				if(salesPersonMenuChoice == 1) {
 			    			System.out.println("Adding new Salesperson\n");
 			    			//Implementation to add salesperson
+			    			System.out.println("Input name of salesperson\n");
+			    			String name = CheckInput.getString();
+			    			System.out.println("Input commission of salesperson\n");
+			    			int commission = CheckInput.getInt();
+			    			System.out.println("Input total commission of salesperson\n");
+			    			int totalCommission = CheckInput.getInt();
+			    			System.out.println("Input total sales of salesperson\n");
+			    			int totalSales = CheckInput.getInt();
+			    			Salesperson person = new Salesperson(name, commission, totalCommission, totalSales);
+			    			List <Salesperson> salesperson = new Arraylist<Salesperson>();
+			    			salesperson.add(person);
+			    			
 			    		}
 	    				
 			    		if(salesPersonMenuChoice == 2) {
 			    			System.out.println("Which saleperson do you want to remove? \n");
 			    			//Implementation to Remove salesperson
+			    			System.out.println("Input name of salesperson\n");
+			    			String name = CheckInput.getString();
+			    			Salesperson person = new Salesperson(name);
+			    			List <Salesperson> salesperson = new Arraylist<Salesperson>();
+			    			salesperson.remove(person);
 			    		}
 			    		
 			    		if(salesPersonMenuChoice == 3) {
@@ -204,6 +221,7 @@ public class Main {
 	
 	public static void accountCreate(String name, String password) {
 		//Code to fill database goes here
+		
 	}
 	
 	//Code to check database with password goes here
