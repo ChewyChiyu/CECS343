@@ -42,7 +42,8 @@ public class Main {
 			    		System.out.print("What do you want to do? \n1. Create Invoice \n2. Edit Invoice \n3. Display Invoices\n4. Go back \n");
 			    		int invoiceMenuChoice = CheckInput.getIntRange(1,4);
 			    		if(invoiceMenuChoice == 1) {
-			    			System.out.println("Creating new inovice...\n");
+			    			System.out.println("Creating new invoice...\n");
+			    			
 			    			//Implementation of the filling of invoice
 			    			System.out.println("Input name of customer:\n");
 			    			String name = CheckInput.getString();
@@ -78,13 +79,16 @@ public class Main {
 			    			int deliveryCharge = CheckInput.getInt();
 			    			
 			    			Invoice personInvoice = new Invoice(name, productName, salespersonName, address, quantityBuying, zipCode, bill, deliveryChargeCost, salesTax, invoicePaid, deliveryCharge);
-			    			List <Invoice> invoice = new ArrayList<Invoice>();
-			    			invoice.add(personInvoice);
+			    			// List <Invoice> invoice = new ArrayList<Invoice>();
+			    			// invoice.add(personInvoice);
+			    			Database.getDatabase().add(personInvoice);
+			    			System.out.println("Invoice was created!/n" + personInvoice.getData() + "\n");
 			    			
 			    		}
 			    		if(invoiceMenuChoice == 2) {
 			    			System.out.println("Which invoice do you want to edit?");
 			    			//Implementation to display invoices and edit them
+			    			
 			    		}
 			    		if(invoiceMenuChoice == 3) {
 			    			boolean displayInvoiceMenu = true;
@@ -93,6 +97,7 @@ public class Main {
 			    				int displayInvoiceChoice = CheckInput.getIntRange(1, 3);
 			    				if (displayInvoiceChoice == 1) {
 			    					System.out.println("Displaying open invoices\n");
+			    					
 			    				}
 			    				if (displayInvoiceChoice == 2) {
 			    					System.out.println("Displaying closed inovices\n");
@@ -217,6 +222,7 @@ public class Main {
 	    				
 			    		if(salesPersonMenuChoice == 2) {
 			    			System.out.println("Which saleperson do you want to remove? \n");
+			    			
 			    			//Implementation to Remove salesperson
 			    			System.out.println("Input name of salesperson\n");
 			    			String name = CheckInput.getString();
