@@ -41,6 +41,34 @@ public class Main {
 			    		if(invoiceMenuChoice == 1) {
 			    			System.out.println("Creating new inovice...\n");
 			    			//Implementation of the filling of invoice
+			    			System.out.println("Input name of customer:\n");
+			    			String name = CheckInput.getString();
+			    			System.out.println("Input name of product:\n");
+			    			String productName = CheckInput.getString();
+			    			System.out.println("Input name of salespersonName:\n");
+			    			String salespersonName = CheckInput.getString();
+			    			System.out.println("Input billing address of customer:\n");
+			    			String address = CheckInput.getString();
+			    			System.out.println("Input quantity of the product:\n");
+			    			int quantityBuying = CheckInput.getInt();
+			    			System.out.println("Input zip code of customer:\n");
+			    			int zipCode = CheckInput.getInt();
+			    			System.out.println("Input current invoice balance of customer:\n");
+			    			int bill = CheckInput.getInt();
+			    			System.out.println("Input deliver charge if product delivered:\n");
+			    			int deliveryChargeCost = CheckInput.getInt();
+			    			System.out.println("Input deliver charge if product delivered:\n");
+			    			int deliveryChargeCost = CheckInput.getInt();
+			    			System.out.println("Input tax charge:\n");
+			    			int salesTax = CheckInput.getInt();
+			    			System.out.println("Input amount that was paid:\n");
+			    			int invoicePaid = CheckInput.getInt();
+			    			System.out.println("Input charge amount for delivery:\n");
+			    			int deliveryCharge = CheckInput.getInt();
+			    			Invoice personInvoice = new Invoice(name, productName, salespersonName, address, quantityBuying, zipCode, bill, deliveryChargeCost, salesTax, invoicePaid, deliveryCharge);
+			    			List <Invoice> invoice = new Arraylist<Invoice>();
+			    			invoice.add(personInvoice);
+			    			
 			    		}
 			    		if(invoiceMenuChoice == 2) {
 			    			System.out.println("Which invoice do you want to edit?");
@@ -113,6 +141,7 @@ public class Main {
 			    				if(productDisplayChoice == 1) {
 					    			System.out.println("Displaying stock of products...\n");
 					    			//Display stock
+					    			
 					    		}
 			    				
 					    		if(productDisplayChoice == 2) {
@@ -181,6 +210,7 @@ public class Main {
 			    		if(salesPersonMenuChoice == 3) {
 				    		System.out.println("Displaying Total Sales and Commissions \n");
 				    		//Implementation to Display all sales and commissions associated to each sale
+				    		
 			    		}
 			    		
 			    		if(salesPersonMenuChoice == 4) {
