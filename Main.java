@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 //import java.util.Scanner;
 
 public class Main {
@@ -43,30 +46,39 @@ public class Main {
 			    			//Implementation of the filling of invoice
 			    			System.out.println("Input name of customer:\n");
 			    			String name = CheckInput.getString();
+			    			
 			    			System.out.println("Input name of product:\n");
 			    			String productName = CheckInput.getString();
+			    			
 			    			System.out.println("Input name of salespersonName:\n");
 			    			String salespersonName = CheckInput.getString();
+			    			
 			    			System.out.println("Input billing address of customer:\n");
 			    			String address = CheckInput.getString();
+			    			
 			    			System.out.println("Input quantity of the product:\n");
 			    			int quantityBuying = CheckInput.getInt();
+			    			
 			    			System.out.println("Input zip code of customer:\n");
 			    			int zipCode = CheckInput.getInt();
+			    			
 			    			System.out.println("Input current invoice balance of customer:\n");
 			    			int bill = CheckInput.getInt();
+			    			
 			    			System.out.println("Input deliver charge if product delivered:\n");
 			    			int deliveryChargeCost = CheckInput.getInt();
-			    			System.out.println("Input deliver charge if product delivered:\n");
-			    			int deliveryChargeCost = CheckInput.getInt();
+			    			
 			    			System.out.println("Input tax charge:\n");
 			    			int salesTax = CheckInput.getInt();
+			    			
 			    			System.out.println("Input amount that was paid:\n");
 			    			int invoicePaid = CheckInput.getInt();
+			    			
 			    			System.out.println("Input charge amount for delivery:\n");
 			    			int deliveryCharge = CheckInput.getInt();
+			    			
 			    			Invoice personInvoice = new Invoice(name, productName, salespersonName, address, quantityBuying, zipCode, bill, deliveryChargeCost, salesTax, invoicePaid, deliveryCharge);
-			    			List <Invoice> invoice = new Arraylist<Invoice>();
+			    			List <Invoice> invoice = new ArrayList<Invoice>();
 			    			invoice.add(personInvoice);
 			    			
 			    		}
@@ -192,7 +204,7 @@ public class Main {
 			    			System.out.println("Input total sales of salesperson\n");
 			    			int totalSales = CheckInput.getInt();
 			    			Salesperson person = new Salesperson(name, commission, totalCommission, totalSales);
-			    			List <Salesperson> salesperson = new Arraylist<Salesperson>();
+			    			List <Salesperson> salesperson = new ArrayList<Salesperson>();
 			    			salesperson.add(person);
 			    			
 			    		}
@@ -202,8 +214,8 @@ public class Main {
 			    			//Implementation to Remove salesperson
 			    			System.out.println("Input name of salesperson\n");
 			    			String name = CheckInput.getString();
-			    			Salesperson person = new Salesperson(name);
-			    			List <Salesperson> salesperson = new Arraylist<Salesperson>();
+			    			Salesperson person = new Salesperson(name, 0, 0, 0);
+			    			List <Salesperson> salesperson = new ArrayList<Salesperson>();
 			    			salesperson.remove(person);
 			    		}
 			    		
