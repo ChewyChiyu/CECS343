@@ -222,13 +222,29 @@ public class Main {
 			    			String name = CheckInput.getString();
 			    			Salesperson person = new Salesperson(name, 0, 0, 0);
 
-			    			//Database.getDatabase().delete(person);
+			    			// Check whether delete was successful and inform user
+			    			if(Database.getDatabase().delete(person)) {
+			    				System.out.println(person.getName() + " has been successfully removed!\n");
+			    			}
+			    			else {
+			    				System.out.println(person.getName() + " was not found in the database.\n");
+			    			}
 			    		}
 			    		
 			    		if(salesPersonMenuChoice == 3) {
-				    		System.out.println("Displaying Total Sales and Commissions \n");
 				    		//Implementation to Display all sales and commissions associated to each sale
+				    		System.out.println("Displaying Total Sales and Commissions: \n");
 				    		
+				    		// Create copy of list from database to read out from
+				    		ArrayList list = Database.getDatabase().selectSalesperson();
+				    		
+				    		// Loop list to display salesperson information in an organized list
+				    		for(int i = 0; i < list.size(); i++) {
+				    			System.out.println(list.get(i));
+				    			if(i == list.size() - 1) {
+				    				System.out.println("");
+				    			}
+				    		}
 			    		}
 			    		
 			    		if(salesPersonMenuChoice == 4) {
