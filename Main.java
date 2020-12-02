@@ -185,28 +185,34 @@ public class Main {
 			    }
 			    
 			    if (menuChoice == 4) {
-			    	//System.out.println("1. Add new Salesperson \n2. Remove Salesperson \n3. Display Total Sales and Commissions  \n4. Change commission rates for salesperson \n5. Go back\n");
+			    	//Main Menu for salesperson submenu
 			    	boolean salespersonMenu = true;
 	    			while (salespersonMenu == true) {
-				    	System.out.print("1. Add new Salesperson \n2. Remove Salesperson \n3. Display Total Sales and Commissions  \n4. Change commission rates for salesperson \n5. Go back\n");
+				    	System.out.print("-Salesperson Menu-\n1. Add new Salesperson \n2. Remove Salesperson \n3. Display Total Sales and Commissions  \n4. Change commission rates for salesperson \n5. Go back\n");
 	    				//System.out.println("Adding new Salesperson \n");
 	    				int salesPersonMenuChoice = CheckInput.getIntRange(1, 5);
 	    				
 	    				if(salesPersonMenuChoice == 1) {
 			    			System.out.println("Adding new Salesperson\n");
+			    			
 			    			//Implementation to add salesperson
 			    			System.out.println("Input name of salesperson\n");
 			    			String name = CheckInput.getString();
+			    			
 			    			System.out.println("Input commission of salesperson\n");
 			    			int commission = CheckInput.getInt();
+			    			
 			    			System.out.println("Input total commission of salesperson\n");
 			    			int totalCommission = CheckInput.getInt();
+			    			
 			    			System.out.println("Input total sales of salesperson\n");
 			    			int totalSales = CheckInput.getInt();
-			    			Salesperson person = new Salesperson(name, commission, totalCommission, totalSales);
-			    			List <Salesperson> salesperson = new ArrayList<Salesperson>();
-			    			salesperson.add(person);
 			    			
+			    			Salesperson person = new Salesperson(name, commission, totalCommission, totalSales);
+			    			//List <Salesperson> salesperson = new ArrayList<Salesperson>();
+			    			//salesperson.add(person);
+			    			Database.getDatabase().add(person);
+			    			System.out.println("Added " + person.getName() + " as new Salesperson!\n");
 			    		}
 	    				
 			    		if(salesPersonMenuChoice == 2) {
@@ -215,8 +221,8 @@ public class Main {
 			    			System.out.println("Input name of salesperson\n");
 			    			String name = CheckInput.getString();
 			    			Salesperson person = new Salesperson(name, 0, 0, 0);
-			    			List <Salesperson> salesperson = new ArrayList<Salesperson>();
-			    			salesperson.remove(person);
+
+			    			//Database.getDatabase().delete(person);
 			    		}
 			    		
 			    		if(salesPersonMenuChoice == 3) {
