@@ -20,12 +20,14 @@ public class Salesperson{
 	}
 
 	public String getName(){ return name; }
-	public int getComission(){ return commission; }
+	public int getCommission(){ return commission; }
 	public int getTotalCommission(){return totalCommission; }
 	public int getTotalSales(){ return totalSales; }
+	
+	public void setCommission(int set) {commission = set;}
 
 
-	public String toString(){ return "Name: " + name + ", Total Commission: " + totalCommission + ", Total Sales: " + totalSales; }
+	public String toString(){ return "Name: " + name + ", Commission Rate: " + commission + ", Total Commission: " + totalCommission + ", Total Sales: " + totalSales; }
 	public String getData(){ return name + "," + commission +  "," + totalCommission + "," + totalSales;	}
 	public boolean equals(Salesperson o){ return name.equals(o.name); }
 

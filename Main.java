@@ -236,7 +236,7 @@ public class Main {
 				    		System.out.println("Displaying Total Sales and Commissions: \n");
 				    		
 				    		// Create copy of list from database to read out from
-				    		ArrayList list = Database.getDatabase().selectSalesperson();
+				    		ArrayList<Salesperson> list = Database.getDatabase().selectSalesperson();
 				    		
 				    		// Loop list to display salesperson information in an organized list
 				    		for(int i = 0; i < list.size(); i++) {
@@ -248,8 +248,40 @@ public class Main {
 			    		}
 			    		
 			    		if(salesPersonMenuChoice == 4) {
+			    			//Implementation to change commission rate for salesperson
 				    		System.out.println("Which salesperson do you want to change commission rate for? \n");
-				    		//Implementation to change commission rate for salesperson
+				    		String name = CheckInput.getString();
+				    		
+				    		// Create copy of list from database to read out from
+				    		ArrayList<Salesperson> list = Database.getDatabase().selectSalesperson();
+				    		
+				    		// Variable to replace deleted entry in database after update
+				    		Salesperson person = null;
+				    		
+				    		// Loop through all salespersons to find current rate for salesperson
+				    		for(int i = 0; i < list.size(); i++) {
+				    			if(list.get(i).getName().equals(name)) {
+				    				person = list.get(i);
+				    				System.out.println("Name: " + name + ", Current Commission Rate: " + person.getCommission());
+				    			}
+				    		}
+				    		
+				    		// Check salesperson was found, print error if not
+				    		if(person == null) {
+				    			System.out.println("Salesperson not found.\n");
+				    		}
+				    		else {
+				    			// Implementation for changing rate, deleting old entry, adding new entry
+				    			System.out.println("What do you want to change " + name + "'s commission rate to?");
+				    			int rate = CheckInput.getInt();
+				    			
+				    			// Updates placeholder salesperson rate
+				    			person.setCommission(rate);
+				    			// removes current entry for selected salesperson
+				    			Database.getDatabase().delete(person);
+				    			// Inserts updated entry for selected salesperson
+				    			Database.getDatabase().add(person);
+				    		}
 			    		}
 			    		
 			    		if(salesPersonMenuChoice == 5) {
