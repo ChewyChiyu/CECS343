@@ -112,13 +112,15 @@ public class Main {
 			    				if (displayInvoiceChoice == 2) {
 			    					System.out.println("Displaying closed inovices\n");
 			    					
-			    					ArrayList<Invoice> open = Database.getDatabase().selectInvoice();
-//			    					for (Invoice invoiceP: list) {
-//			    						  if (open.getInvoicePaid() = 1) {
-//			    							  
-//			    						  }
-//			    					}
-			    					
+			    					ArrayList<Invoice> list = Database.getDatabase().selectInvoice();
+			    					for(int i = 0; i < list.size(); i++) {
+			    						if (list[i].getInvoicePaid == 1) {
+			    							System.out.println(list.get(i));
+							    			if(i == list.size() - 1) {
+							    				System.out.println("");
+							    			}
+			    						}
+						    		}
 			    				}
 			    				if (displayInvoiceChoice == 3) {
 			    					displayInvoiceMenu = false;
