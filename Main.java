@@ -114,7 +114,7 @@ public class Main {
 			    					
 			    					ArrayList<Invoice> list = Database.getDatabase().selectInvoice();
 			    					for(int i = 0; i < list.size(); i++) {
-			    						if (list[i].getInvoicePaid == 1) {
+			    						if (list.get(i).getInvoicePaid() == 1) {
 			    							System.out.println(list.get(i));
 							    			if(i == list.size() - 1) {
 							    				System.out.println("");
@@ -197,8 +197,71 @@ public class Main {
 			    		}
 			    		
 			    		if(productMenuChoice == 2) {
+			    			//Chooses product and changes products details.
 			    			System.out.println("Which product do you want to edit?");
-			    			//Chooses product and changes products details. Submenu to be developed
+			    			String input = CheckInput.getString();
+			    			
+			    			//Retrieve database to check input against
+			    			ArrayList<Product> list = Database.getDatabase().selectProduct();
+			    			
+			    			//Create dummy object for user to update and replaces old entry
+			    			Product p = null;
+			    			
+			    			// Loop through list to find entry 
+			    			for(int i = 0; i < list.size(); i++) {
+			    				if(input.equals(list.get(i).getName())) {
+			    					p = list.get(i);
+			    					System.out.println("Product Info: " + p.toString());
+			    				}
+			    			}
+			    			
+			    			// Product was not found, end editing
+			    			if(p == null) {
+			    				System.out.println("Product not found.\n");
+			    			}
+			    			// Product found, allow user to edit variables
+			    			else {
+			    				// Loop through editing menu and query user for input
+			    				boolean productEditMenu = true;
+			    				while(productEditMenu) {
+				    				System.out.println("What variable would you like to edit?\n1. Name\n2. Quantity\n3. Cost\n4. Selling Price\n5. Finish");
+				    				int productEditMenuChoice = CheckInput.getIntRange(1, 5);
+				    				switch(productEditMenuChoice) {
+				    				// Change name of product
+				    				case 1:
+				    					System.out.println("Input new product name: ");
+				    					String name = CheckInput.getString();
+				    					p.setName(name);
+				    					break;
+				    				// Change quantity of product
+				    				case 2:
+				    					System.out.println("Input new product quantity: ");
+				    					int quantity = CheckInput.getInt();
+				    					p.setQuantity(quantity);
+				    					break;
+				    				// Change Cost of product
+				    				case 3:
+				    					System.out.println("Input new product cost: ");
+				    					int cost = CheckInput.getInt();
+				    					p.setCost(cost);
+				    					break;
+				    				// Change Selling Price of Product
+				    				case 4:
+				    					System.out.println("Input new product selling price: ");
+				    					int price = CheckInput.getInt();
+				    					p.setPrice(price);
+				    					break;
+				    				// Break loop / exit menu
+				    				case 5:
+				    					productEditMenu = false;
+				    					break;
+				    				}
+			    				}
+			    				//Remove old entry using updated duplicate as input
+			    				Database.getDatabase().delete(p);
+			    				//Add updated duplicate as new entry to update in database
+			    				Database.getDatabase().add(p);
+			    			}
 			    		}
 			    		
 			    		if(productMenuChoice == 3) {
