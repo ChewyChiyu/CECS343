@@ -117,14 +117,16 @@ public class Main {
 			    				int displayInvoiceChoice = CheckInput.getIntRange(1, 3);
 			    				if (displayInvoiceChoice == 1) {
 			    					System.out.println("Displaying open invoices\n");
-			    					ArrayList<Invoice> list = Database.getDatabase().selectInvoice();
+			    					ArrayList<Invoice> list = Database.getDatabase().selectInvoice(); 
+			    					Collections.sort(list, Collections.comparing(Invoice::getTimeStamp));
+			    					Collections.reverse(list);
 			    					for(int i = 0; i < list.size(); i++) {
 			    						System.out.println(list.get(i));
-						    			if(i == list.size() - 1) {
-						    				System.out.println("");
-						    			}
+							    		if(i == list.size() - 1) {
+							    			System.out.println("");
+							    		}
 						    		}
-			    				}
+			    				}	
 			    				if (displayInvoiceChoice == 2) {
 			    					System.out.println("Displaying closed inovices\n");
 			    					
