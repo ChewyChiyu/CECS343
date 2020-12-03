@@ -72,8 +72,8 @@ public class Main {
 			    			System.out.println("Input tax charge:\n");
 			    			int salesTax = CheckInput.getInt();
 			    			
-			    			System.out.println("Input amount that was paid:\n");
-			    			int invoicePaid = CheckInput.getInt();
+			    			System.out.println("Input 1 if invoice was paid or 0 if invoice was not paid:\n");
+			    			int invoicePaid = CheckInput.getIntRange(0,1);
 			    			
 			    			System.out.println("Input charge amount for delivery:\n");
 			    			int deliveryCharge = CheckInput.getInt();
@@ -97,10 +97,17 @@ public class Main {
 			    				int displayInvoiceChoice = CheckInput.getIntRange(1, 3);
 			    				if (displayInvoiceChoice == 1) {
 			    					System.out.println("Displaying open invoices\n");
-			    					
+			    					ArrayList<Invoice> list = Database.getDatabase().selectInvoice();
+			    					for(int i = 0; i < list.size(); i++) {
+			    						System.out.println(list.get(i));
+						    			if(i == list.size() - 1) {
+						    				System.out.println("");
+						    			}
+						    		}
 			    				}
 			    				if (displayInvoiceChoice == 2) {
 			    					System.out.println("Displaying closed inovices\n");
+			    					ArrayList<Invoice>  = Database.getDatabase().selectInvoice();
 			    					
 			    				}
 			    				if (displayInvoiceChoice == 3) {
