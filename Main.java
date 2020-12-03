@@ -6,29 +6,32 @@ import java.util.List;
 public class Main {
 
 	public static void main(String[] args) {
-		//System.out.println("Hello please enter your user info");
-		boolean accountCreation = true;
+		ArrayList <Owner> owners = Database.getDatabase().selectOwner();
 		boolean accountMenu = true;
-		//boolean access = false;
 		
-		if (accountCreation == false) {
+		if (owners.size() == 0) {
 			System.out.println("Hello please enter your user info");
+			System.out.println("What do you want to username to be?");
 			String userName = CheckInput.getString();
+			System.out.println("Enter Password to use for login");
 			String password = CheckInput.getString();
-			accountCreate(userName, password);
-			accountCreation = true;
-			//Code to fill database goes here
+			Owner o = new Owner(userName, password);
+			Database.getDatabase().add(o);
 		}
 		//}
 		else {
 			System.out.println("Enter password");
 			while (accountMenu) {
-				int password = CheckInput.getInt();
-				int temp = loginAccount(password);
-				if (temp == 1) {
+				String password = CheckInput.getString();
+				String passwordDB = owners.get(0).getPassword();
+				boolean passCheck = passwordDB.equals(password);
+				if (passCheck) {
 					accountMenu = false;
 					//access = true;
 				}
+				else
+					System.out.println("incorrect password");
+					System.out.println(passwordDB + " " + password);
 			}
 			boolean mainMenu = true;
 			//boolean invoiceMenu = true;
@@ -434,28 +437,6 @@ public class Main {
 			}
 		}
 	
-	}
-	
-	public static void accountCreate(String name, String password) {
-		//Code to fill database goes here
-		
-	}
-	
-	//Code to check database with password goes here
-	static boolean login = true;
-	//static int password = 0;
-	public static int loginAccount(int name) {
-		while (login) {
-			if (name == 1) {
-				System.out.println("Logging in...");
-				return 1;
-			}
-			else {
-				System.out.println("Incorrect password");
-				return 0;
-			}
-		}
-		return 0;
 	}
 	
 }
