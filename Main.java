@@ -121,12 +121,28 @@ public class Main {
 			    		System.out.print("What do you want to do? \n1. Add Warehouse \n2. Remove Warehouse \n3. Go back \n");
 			    		int warehouseMenuChoice = CheckInput.getIntRange(1,3);
 			    		if(warehouseMenuChoice == 1) {
-			    			System.out.println("Adding new warehouse...\n");
 			    			//Implementation to add warehouse here
+			    			System.out.println("What do you want to name the warehouse?");
+			    			String result = CheckInput.getString();
+			    			
+			    			// Create warehouse object to be represented in DB
+			    			Warehouse wares = new Warehouse(result, new ArrayList<>());
+			    			
+			    			// Add warehouse to database
+			    			Database.getDatabase().add(wares);
 			    		}
 			    		if(warehouseMenuChoice == 2) {
-			    			System.out.println("Which warehouse do you want to remove?");
+			    			System.out.println("Which warehouse do you want to remove?\nInput Name of Warehouse:");
 			    			//Implementation to remove warehouse here
+			    			String result = CheckInput.getString();
+			    			Warehouse house = new Warehouse(result, null);
+			    			
+			    			if(Database.getDatabase().delete(house)) {
+			    				System.out.println(house.getName() + " has been successfully removed!\n");
+			    			}
+			    			else {
+			    				System.out.println(house.getName() + " was not found in the database.\n");
+			    			}
 			    		}
 			    		if(warehouseMenuChoice == 3) {
 			    			warehouseMenu = false;
@@ -140,8 +156,9 @@ public class Main {
 			    		System.out.print("1. Add new Product \n2. Edit Product Edit \n3. Display for products \n4. Go back \n");
 			    		int productMenuChoice = CheckInput.getIntRange(1, 4);
 			    		if(productMenuChoice == 1) {
-			    			System.out.println("Fill details of new product");
 			    			//Calls product create function and user fills product details
+			    			System.out.println("Fill details of new product");
+			    			// Create product, ask for warehouse, get warehouse from db -> update -> delete old, insert new?
 			    		}
 			    		
 			    		if(productMenuChoice == 2) {

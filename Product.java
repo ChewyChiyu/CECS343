@@ -33,7 +33,7 @@ public class Product{
 		this.totalProfitPercent = totalProfitPercent;
 	}
 
-
+   public String getName() { return name; }
    public String toString(){ return "name: " + name + " quantity: " + quantity; }
    public String getData(){ return name+","+quantity+","+costPrice+","+sellingPrice+","+quantitySold+","+totalSale+","+totalCost+","+totalProfit+","+totalProfitPercent;}
    public boolean equals(Product o){ return name.equals(o.name); }
