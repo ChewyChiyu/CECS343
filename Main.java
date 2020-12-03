@@ -193,6 +193,7 @@ public class Main {
 			    			}
 			    		}
 			    		if(warehouseMenuChoice == 3) {
+			    			// Exit submenu option
 			    			warehouseMenu = false;
 			    		}
 			    	}
@@ -330,8 +331,37 @@ public class Main {
 					    		}
 					    		
 					    		if(productDisplayChoice == 4) {
-					    			System.out.println("Which product information do you want to see? ");
 					    			//Implementation for displaying product information
+					    			System.out.println("Displaying all product information by descending profit percentage: ");
+					    			
+					    			// Copy database product list to be sorted
+					    			ArrayList<Product> list = Database.getDatabase().selectProduct();
+					    			
+					    			// Empty list to accept sorted elements from product list
+					    			ArrayList<Product> sortedList = new ArrayList<>();
+					    			
+					    			// Loop to create sorted list of elements to display
+					    			while(list.size() > 0) {
+					    				
+					    				double max = 0.0;
+					    				int index = 0;
+					    				
+					    				// Loop through values in product list to find largest
+					    				for(int i = 0; i < list.size(); i++) {
+					    					if(list.get(i).getProfitPercent() > max) {
+					    						max = list.get(i).getProfitPercent();
+					    						index = i;
+					    					}
+					    				}
+					    				// Once loop is complete, index of highest value is found and can be put in the sorted list
+					    				sortedList.add(list.get(index));
+					    				list.remove(index);
+					    			}
+					    			// Loop to print out sorted list result
+					    			for(int i = 0; i < sortedList.size(); i++) {
+					    				System.out.println("Entry " + (i + 1) + "- " + sortedList.get(i));
+					    			}
+					    			
 					    		}
 					    		
 					    		if(productDisplayChoice == 5) {

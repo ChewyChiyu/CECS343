@@ -35,12 +35,14 @@ public class Product{
 
    public String getName() { return name; }
    public void setName(String in) {name = in;}
-   public String toString(){ return "Name: " + name + ", Quantity: " + quantity + ", Cost: " + costPrice + ", Selling Price: " + sellingPrice; }
+   public String toString(){ return "Name: " + name + ", Quantity: " + quantity + ", Cost: " + costPrice + ", Selling Price: " + sellingPrice + ", Quantity Sold: " + quantitySold + "\n        Total from Sales: " + totalSale + ", Total from Cost: " + totalCost + ", Total Profit: " + totalProfit + ", Profit Percentage: %" + totalProfitPercent; }
    public String getData(){ return name+","+quantity+","+costPrice+","+sellingPrice+","+quantitySold+","+totalSale+","+totalCost+","+totalProfit+","+totalProfitPercent;}
    public boolean equals(Product o){ return name.equals(o.name); }
    public void setQuantity(int in) {quantity = in;}
    public void setCost(int in) {costPrice = in;}
    public void setPrice(int in) {sellingPrice = in;}
+
+   public double getProfitPercent() { return totalProfitPercent; }
 
 
 }
