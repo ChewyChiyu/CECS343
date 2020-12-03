@@ -205,7 +205,7 @@ public final class Database{
  
             while ((line = bufferedReader.readLine()) != null) {
                  String[] data = line.split(",");
-                 invoiceEntityList.add(new Invoice(data[0],data[1],data[2],data[3],Integer.parseInt(data[4]),Integer.parseInt(data[5]),Integer.parseInt(data[6]),Integer.parseInt(data[7]),Integer.parseInt(data[8]),Integer.parseInt(data[9]),Integer.parseInt(data[10])));
+                 invoiceEntityList.add(new Invoice(data[0],data[1],data[2],data[3],Integer.parseInt(data[4]),Integer.parseInt(data[5]),Integer.parseInt(data[6]),Integer.parseInt(data[7]),Integer.parseInt(data[8]),Integer.parseInt(data[9]),Integer.parseInt(data[10]),Long.parseLong(data[11])));
             }
             reader.close();
  

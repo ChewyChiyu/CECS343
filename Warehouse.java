@@ -20,10 +20,11 @@ public class Warehouse{
 	public String getData(){ return name + "," + getProductNames(); }
 	public boolean equals(Warehouse o){ return name.equals(o.name); }
 	public String getProductNames(){
+		if(productNames.isEmpty()) return "";
 		String str = "";
 		for(String s : productNames){ str+= s + ","; }
 		return str.substring(0,str.length()-1);
 	}
-
+	public String getName() {return name;}
 	
 }
