@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CheckInput {
@@ -68,6 +69,31 @@ public class CheckInput {
 	public static String getString() {
 		Scanner in = new Scanner( System.in );
 		String input = in.nextLine();
+		return input;
+	}
+	
+	//Checks if product exist already
+	public static String getValidProductName() {
+		boolean valid = false;
+		Scanner in = new Scanner( System.in );
+		String input = in.nextLine();
+		Product productCheck = null;
+		while(!valid) {
+			ArrayList<Product> productsDB = Database.getDatabase().selectProduct();
+			for (int i = 0; i < productsDB.size(); i++) {
+				if (productsDB.get(i).getName().equalsIgnoreCase(input)) {
+					productCheck = productsDB.get(i);
+					if(productCheck.getName().equalsIgnoreCase(input)) {
+						System.out.println("Found the product in Datbase, Enter a new product name");
+						//in.next();
+						input = getValidProductName();
+						
+					}
+				}
+			}
+		//System.out.println("leaving loop");
+		valid = true;
+		}
 		return input;
 	}
 

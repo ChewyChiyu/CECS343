@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 //import java.util.Scanner;
@@ -42,9 +44,8 @@ public class Main {
 					accountMenu = false;
 					//access = true;
 				}
-				else
+				else if (passCheck == false)
 					System.out.println("incorrect password");
-					System.out.println(passwordDB + " " + password);
 			}
 			boolean mainMenu = true;
 			//boolean invoiceMenu = true;
@@ -102,7 +103,7 @@ public class Main {
 			    			// List <Invoice> invoice = new ArrayList<Invoice>();
 			    			// invoice.add(personInvoice);
 			    			Database.getDatabase().add(personInvoice);
-			    			System.out.println("Invoice was created!/n" + personInvoice.getData() + "\n");
+			    			System.out.println("Invoice was created!\n" + personInvoice.getData() + "\n");
 			    			
 			    		}
 			    		if(invoiceMenuChoice == 2) {
@@ -117,14 +118,24 @@ public class Main {
 			    				int displayInvoiceChoice = CheckInput.getIntRange(1, 3);
 			    				if (displayInvoiceChoice == 1) {
 			    					System.out.println("Displaying open invoices\n");
-			    					ArrayList<Invoice> list = Database.getDatabase().selectInvoice(); 
-			    					Collections.sort(list, Collections.comparing(Invoice::getTimeStamp));
-			    					Collections.reverse(list);
-			    					for(int i = 0; i < list.size(); i++) {
-			    						System.out.println(list.get(i));
-							    		if(i == list.size() - 1) {
-							    			System.out.println("");
-							    		}
+			    					ArrayList<Invoice> invoices = Database.getDatabase().selectInvoice();
+			    					
+			    					Collections.sort(invoices, new Comparator<Invoice>() {
+			    						public int compare (Invoice i1, Invoice i2) {
+			    							if(i1.getTimeStamp() == i2.getTimeStamp())
+			    								return 0;
+			    							else if(i1.getTimeStamp() > i2.getTimeStamp())
+			    								return 1;
+			    							else
+			    								return -1;
+			    						}
+			    					});
+
+			    					for(int i = 0; i < invoices.size(); i++) {
+			    						System.out.println(invoices.get(i));
+										/*
+										 * if(i == invoices.size()) { System.out.println(""); }
+										 */
 						    		}
 			    				}	
 			    				if (displayInvoiceChoice == 2) {
@@ -195,7 +206,8 @@ public class Main {
 			    		if(productMenuChoice == 1) {
 			    			//Calls product create function and user fills product details
 			    			System.out.println("What is the name of the product?");
-			    			String name = CheckInput.getString();
+			    			String name = CheckInput.getValidProductName();
+			    			//String productCheck = CheckInput.getValidProductName();
 			    			
 			    			System.out.println("What is the quantity of the product?");
 			    			int quantity = CheckInput.getInt();
