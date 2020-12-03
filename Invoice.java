@@ -41,6 +41,7 @@ public class Invoice{
 	public String toString(){ return "name: " + name + " productName: " + productName + " address: " + address; }
 	public String getData(){ return name + "," + productName + "," + salespersonName + "," + address + "," + quantityBuying + "," + zipCode + "," + bill + "," + deliveryChargeCost + "," + salesTax + "," + invoicePaid + "," + deliveryCharge + "," + timeStamp; }
 	public boolean equals(Invoice o){ return name.equals(o.name); }
+	public int getInvoicePaid(){ return invoicePaid; }
 
 
 
