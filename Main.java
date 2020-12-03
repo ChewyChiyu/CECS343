@@ -82,6 +82,7 @@ public class Main {
 			    			long timestamp = System.currentTimeMillis();
 			    			
 			    			Invoice personInvoice = new Invoice(name, productName, salespersonName, address, quantityBuying, zipCode, bill, deliveryChargeCost, salesTax, invoicePaid, deliveryCharge, timestamp);
+
 			    			// List <Invoice> invoice = new ArrayList<Invoice>();
 			    			// invoice.add(personInvoice);
 			    			Database.getDatabase().add(personInvoice);
@@ -110,6 +111,7 @@ public class Main {
 			    				}
 			    				if (displayInvoiceChoice == 2) {
 			    					System.out.println("Displaying closed inovices\n");
+			    					
 			    					ArrayList<Invoice> open = Database.getDatabase().selectInvoice();
 //			    					for (Invoice invoiceP: list) {
 //			    						  if (open.getInvoicePaid() = 1) {
