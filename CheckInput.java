@@ -73,28 +73,38 @@ public class CheckInput {
 	}
 	
 	//Checks if product exist already in Database. If does dont accept it and ask for new name
+	/*
+	 * public static String getValidProductName() { boolean valid = false; Scanner
+	 * in = new Scanner( System.in ); String input = in.nextLine(); Product
+	 * productCheck = null; while(!valid) { ArrayList<Product> productsDB =
+	 * Database.getDatabase().selectProduct(); for (int i = 0; i <
+	 * productsDB.size(); i++) { if
+	 * (productsDB.get(i).getName().equalsIgnoreCase(input)) { productCheck =
+	 * productsDB.get(i); if(productCheck.getName().equalsIgnoreCase(input)) {
+	 * System.out.println("Found the product in Datbase, Enter a new product name");
+	 * //in.next(); input = getValidProductName();
+	 * 
+	 * } } } //System.out.println("leaving loop"); valid = true; } return input; }
+	 */
+	
 	public static String getValidProductName() {
-		boolean valid = false;
-		Scanner in = new Scanner( System.in );
-		String input = in.nextLine();
-		Product productCheck = null;
-		while(!valid) {
-			ArrayList<Product> productsDB = Database.getDatabase().selectProduct();
-			for (int i = 0; i < productsDB.size(); i++) {
-				if (productsDB.get(i).getName().equalsIgnoreCase(input)) {
-					productCheck = productsDB.get(i);
-					if(productCheck.getName().equalsIgnoreCase(input)) {
-						System.out.println("Found the product in Datbase, Enter a new product name");
-						//in.next();
-						input = getValidProductName();
-						
-					}
-				}
-			}
-		//System.out.println("leaving loop");
-		valid = true;
-		}
-		return input;
+
+	    Scanner scan = new Scanner(System.in);
+	    boolean flag = true;
+	    String input = " ";
+	    while(flag){
+	        input = scan.nextLine();
+	        flag = false;
+	        ArrayList<Product> products = Database.getDatabase().selectProduct();
+	        for(Product p : products){
+	            if(p.getName().equalsIgnoreCase(input)) flag = true;
+	            //System.out.println("Found the product in Datbase, Enter a new product name");
+	        }
+	        //reach here means valid name
+	    }
+	    return input;
+
+
 	}
 
 }

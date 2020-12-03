@@ -224,6 +224,19 @@ public class Main {
 			    			
 			    			Database.getDatabase().add(prod);
 			    			System.out.println("New product, " + name + ", added to inventory!");
+			    			
+			    			System.out.println("What warehouse do you want to new product in? ");
+			    			String warehouseInput = CheckInput.getString();
+			    			ArrayList<Warehouse> temp = Database.getDatabase().selectWarehouse();
+			    			
+			    			Warehouse updateWare = null;
+			    			List <String> productsName = null;
+			    			String oldProducts = null;
+			    			for (int i = 0; i < temp.size(); i++) {
+			    				if (temp.get(i).getName().equalsIgnoreCase(warehouseInput)) {
+			    					oldProducts = temp.get(i).getProductNames();
+			    				}
+			    			}
 			    		}
 			    		
 			    		if(productMenuChoice == 2) {
