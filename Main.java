@@ -232,20 +232,31 @@ public class Main {
 			    			ArrayList<Warehouse> temp = Database.getDatabase().selectWarehouse();
 			    			
 			    			Warehouse updateWare = null;
-			    			List <String> productsName = null;
+			    			List <String> productsName = new ArrayList<String>();
 			    			String oldProducts = null;
 			    			String[] arrOldProducts = null;
 			    			for (int i = 0; i < temp.size(); i++) {
 			    				if (temp.get(i).getName().equalsIgnoreCase(warehouseInput)) {
 			    					oldProducts = temp.get(i).getProductNames();
 			    					arrOldProducts = oldProducts.split(",", 0);
+			    					for(int k = 0; k < arrOldProducts.length; k ++) {
+			    						productsName.add(arrOldProducts[k]);
+			    					}
+			    					
 			    					//System.out.println(arrOldProducts);
 			    					//System.out.println(oldProducts);
 			    					//productsName = oldProducts;
 			    				}
+			    				
+			    				else
+			    					System.out.println("No such warehouse exist");
 			    			}
-			    			System.out.println(Arrays.toString(arrOldProducts));
-	    					System.out.println(oldProducts);
+			    			
+			   
+			    			//System.out.println(arrOldProducts);
+			    			
+			    			//System.out.println(arrOldProducts);
+	    					//System.out.println(oldProducts);
 			    		}
 			    		
 			    		if(productMenuChoice == 2) {
@@ -320,25 +331,19 @@ public class Main {
 			    			boolean productDisplayMenu = true;
 			    			while (productDisplayMenu == true) {
 			    				System.out.print("1. Display stock of products \n2. Display products 5 or fewer \n3. Display products quantities by warehouse \n4. Display product information \n5. Go back \n");
-			    				int productDisplayChoice = CheckInput.getIntRange(1, 5);
+			    				int productDisplayChoice = CheckInput.getIntRange(1, 4);
 			    				
-			    				if(productDisplayChoice == 1) {
-					    			System.out.println("Displaying stock of products...\n");
-					    			//Display stock
-					    			
-					    		}
-			    				
-					    		if(productDisplayChoice == 2) {
+					    		if(productDisplayChoice == 1) {
 					    			System.out.println("Displaying stocks 5 or fewer \n");
 					    			//Display products with stock 5 or fewer
 					    		}
 					    		
-					    		if(productDisplayChoice == 3) {
+					    		if(productDisplayChoice == 2) {
 						    		System.out.println("Displaying products quantities by warehouses \n");
 						    		//Display products by stock by warehouses
 					    		}
 					    		
-					    		if(productDisplayChoice == 4) {
+					    		if(productDisplayChoice == 3) {
 					    			//Implementation for displaying product information
 					    			System.out.println("Displaying all product information by descending profit percentage: ");
 					    			
@@ -372,7 +377,7 @@ public class Main {
 					    			
 					    		}
 					    		
-					    		if(productDisplayChoice == 5) {
+					    		if(productDisplayChoice == 4) {
 					    			productDisplayMenu = false;
 					    		}
 			    			}
