@@ -20,9 +20,9 @@ public class Invoice{
 
 	private String name, productName, salespersonName, address;
 	private int quantityBuying, zipCode, bill, deliveryChargeCost, salesTax, invoicePaid, deliveryCharge;;
+	private long timeStamp;
 
-
-	public Invoice(String name, String productName, String salespersonName, String address, int quantityBuying, int zipCode, int bill, int deliveryChargeCost, int salesTax, int invoicePaid, int deliveryCharge){
+	public Invoice(String name, String productName, String salespersonName, String address, int quantityBuying, int zipCode, int bill, int deliveryChargeCost, int salesTax, int invoicePaid, int deliveryCharge, long timeStamp){
 		this.name = name;
 		this.productName = productName;
 		this.salespersonName = salespersonName;
@@ -34,11 +34,12 @@ public class Invoice{
 		this.salesTax = salesTax;
 		this.invoicePaid = invoicePaid;
 		this.deliveryCharge = deliveryCharge;
+		this.timeStamp = timeStamp;
 	} 
 
 
 	public String toString(){ return "name: " + name + " productName: " + productName + " address: " + address; }
-	public String getData(){ return name + "," + productName + "," + salespersonName + "," + address + "," + quantityBuying + "," + zipCode + "," + bill + "," + deliveryChargeCost + "," + salesTax + "," + invoicePaid + "," + deliveryCharge; }
+	public String getData(){ return name + "," + productName + "," + salespersonName + "," + address + "," + quantityBuying + "," + zipCode + "," + bill + "," + deliveryChargeCost + "," + salesTax + "," + invoicePaid + "," + deliveryCharge + "," + timeStamp; }
 	public boolean equals(Invoice o){ return name.equals(o.name); }
 
 
