@@ -72,7 +72,7 @@ public class CheckInput {
 		return input;
 	}
 	
-	//Checks if product exist already
+	//Checks if product exist already in Database. If does dont accept it and ask for new name
 	public static String getValidProductName() {
 		boolean valid = false;
 		Scanner in = new Scanner( System.in );
