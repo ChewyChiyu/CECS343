@@ -78,7 +78,9 @@ public class Main {
 			    			System.out.println("Input charge amount for delivery:\n");
 			    			int deliveryCharge = CheckInput.getInt();
 			    			
-			    			Invoice personInvoice = new Invoice(name, productName, salespersonName, address, quantityBuying, zipCode, bill, deliveryChargeCost, salesTax, invoicePaid, deliveryCharge);
+			    			long time = 12;
+			    			
+			    			Invoice personInvoice = new Invoice(name, productName, salespersonName, address, quantityBuying, zipCode, bill, deliveryChargeCost, salesTax, invoicePaid, deliveryCharge,time);
 			    			// List <Invoice> invoice = new ArrayList<Invoice>();
 			    			// invoice.add(personInvoice);
 			    			Database.getDatabase().add(personInvoice);
@@ -107,7 +109,7 @@ public class Main {
 			    				}
 			    				if (displayInvoiceChoice == 2) {
 			    					System.out.println("Displaying closed inovices\n");
-			    					ArrayList<Invoice>  = Database.getDatabase().selectInvoice();
+			    					ArrayList<Invoice> variableNeeded  = Database.getDatabase().selectInvoice();
 			    					
 			    				}
 			    				if (displayInvoiceChoice == 3) {
