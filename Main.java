@@ -157,8 +157,24 @@ public class Main {
 			    		int productMenuChoice = CheckInput.getIntRange(1, 4);
 			    		if(productMenuChoice == 1) {
 			    			//Calls product create function and user fills product details
-			    			System.out.println("Fill details of new product");
-			    			// Create product, ask for warehouse, get warehouse from db -> update -> delete old, insert new?
+			    			System.out.println("What is the name of the product?");
+			    			String name = CheckInput.getString();
+			    			
+			    			System.out.println("What is the quantity of the product?");
+			    			int quantity = CheckInput.getInt();
+			    			
+			    			System.out.println("What is the cost per unit of the product?");
+			    			int cost = CheckInput.getInt();
+			    			
+			    			System.out.println("What is the selling price of the product?");
+			    			int price = CheckInput.getInt();
+			    			
+			    			//New products haven't been sold, so total sales, total cost, total sale, total profit, profit percent start @ 0
+			    			
+			    			Product prod = new Product(name, quantity, cost, price, 0, 0, 0, 0, 0.0);
+			    			
+			    			Database.getDatabase().add(prod);
+			    			System.out.println("New product, " + name + ", added to inventory!");
 			    		}
 			    		
 			    		if(productMenuChoice == 2) {
