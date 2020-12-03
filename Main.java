@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -233,11 +234,18 @@ public class Main {
 			    			Warehouse updateWare = null;
 			    			List <String> productsName = null;
 			    			String oldProducts = null;
+			    			String[] arrOldProducts = null;
 			    			for (int i = 0; i < temp.size(); i++) {
 			    				if (temp.get(i).getName().equalsIgnoreCase(warehouseInput)) {
 			    					oldProducts = temp.get(i).getProductNames();
+			    					arrOldProducts = oldProducts.split(",", 0);
+			    					//System.out.println(arrOldProducts);
+			    					//System.out.println(oldProducts);
+			    					//productsName = oldProducts;
 			    				}
 			    			}
+			    			System.out.println(Arrays.toString(arrOldProducts));
+	    					System.out.println(oldProducts);
 			    		}
 			    		
 			    		if(productMenuChoice == 2) {
