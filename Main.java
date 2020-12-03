@@ -8,15 +8,28 @@ public class Main {
 	public static void main(String[] args) {
 		ArrayList <Owner> owners = Database.getDatabase().selectOwner();
 		boolean accountMenu = true;
-		
+		boolean accountPassword = false;
 		if (owners.size() == 0) {
 			System.out.println("Hello please enter your user info");
 			System.out.println("What do you want to username to be?");
 			String userName = CheckInput.getString();
-			System.out.println("Enter Password to use for login");
-			String password = CheckInput.getString();
-			Owner o = new Owner(userName, password);
-			Database.getDatabase().add(o);
+			while(accountPassword == false) {
+				System.out.println("Enter Password to use for login");
+				String passwordInitial = CheckInput.getString();
+				System.out.println("Confirm password input");
+				String passwordConfirm = CheckInput.getString();
+				boolean confirmation = checkAccount(passwordInitial, passwordConfirm);
+				String password = null;
+				if (confirmation) {
+					password = passwordConfirm;
+					Owner o = new Owner(userName, password);
+					Database.getDatabase().add(o);
+					accountPassword = true;
+				}
+				else
+					System.out.println("Enter matching passwords");
+					//password = null;			
+			}
 		}
 		//}
 		else {
@@ -435,8 +448,24 @@ public class Main {
 			        System.out.println("Quitting...");
 			    }
 			}
+		}	
+	}
+	static boolean login = true;
+	//static int password = 0;
+	public static Boolean checkAccount(String password, String password2) {
+		while (login) {	
+			boolean checkPassResult = password.equals(password2);
+			if (checkPassResult) {
+				System.out.println("Saving password");
+				return true;
+				
+			}
+			else {
+				System.out.println("Passwords do not match");
+				return false;
+			}
 		}
-	
+		return false;
 	}
 	
 }
