@@ -330,7 +330,11 @@ public class Main {
 			    		if(productMenuChoice == 3) {
 			    			boolean productDisplayMenu = true;
 			    			while (productDisplayMenu == true) {
+
 			    				System.out.print("1. Display stock of products \n2. Display products 5 or fewer \n3. Display products quantities by warehouse \n4. Display product information \n5. Go back \n");
+
+			    				System.out.print("1. Display products 5 or fewer \n2. Display products quantities by warehouse \n3. Display product information \n4. Go back \n");
+
 			    				int productDisplayChoice = CheckInput.getIntRange(1, 4);
 			    				
 					    		if(productDisplayChoice == 1) {
@@ -498,13 +502,52 @@ public class Main {
 			    }
 			    
 			    if (menuChoice == 5) {
+			    	
 			    	boolean changePasswordMenu = true;
 			    	while (changePasswordMenu == true) {
-			    		System.out.print("1. Change password \n2. Go back \n ");
+			    		
+			    		System.out.print("1. Change password \n2. Go back \n");
 			    		int changePasswordChoice = CheckInput.getIntRange(1, 2);
+			    		
 			    		if (changePasswordChoice == 1) {
-			    			System.out.println("Changing password");
+			    			
 			    			//Implementation to change password
+			    			System.out.println("Enter current password: ");
+			    			String pass = CheckInput.getString();
+			    			
+			    			
+			    			// Fetch current password information
+			    			ArrayList<Owner> list = Database.getDatabase().selectOwner();
+			    			String dbPass = list.get(0).getPassword();
+			    			
+			    			// Check for entered password to match with stored
+			    			boolean valid = dbPass.equals(pass);
+			    			if(valid) {
+			    				// Correct password, allow changing
+			    				System.out.println("Enter new password: ");
+			    				String newPass0 = CheckInput.getString();
+			    				System.out.println("Confirm new password: ");
+			    				String newPass1 = CheckInput.getString();
+			    				boolean confirmation = newPass1.equals(newPass0);
+			    				if(confirmation) {
+			    					// Remove old entry from database
+			    					Owner o = list.get(0);
+			    					Database.getDatabase().delete(o);
+			    					// Change password of owner, add entry to database to update
+			    					o.setPassword(newPass0);
+			    					Database.getDatabase().add(o);
+			    					System.out.println("Password successfully updated!");
+			    				}
+			    				else {
+			    					System.out.println("Passwords do not match.");
+			    				}
+			    				
+			    			}
+			    			else {
+			    				//Incorrect Password
+			    				System.out.println("Incorrect password. Access denied\n");
+			    			}
+			    			
 			    		}
 			    		if (changePasswordChoice == 2) {
 			    			changePasswordMenu = false;

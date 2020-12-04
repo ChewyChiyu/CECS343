@@ -10,9 +10,13 @@ public class Owner{
 
 	public String getName(){ return name; }
 	public String getPassword(){ return password; }
+	
+	public void setPassword(String pass) { password = pass; }
 
 	public String toString(){ return "name: " + name + " password: " + password; }
 	public String getData(){ return name + "," + password;	}
 	public boolean equals(Owner o){ return name.equals(o.name); }
+
+
 
 }
