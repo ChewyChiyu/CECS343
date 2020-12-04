@@ -379,7 +379,7 @@ public class Main {
 					    			
 					    			// Print sorted list!
 					    			for(int i = 0; i < sortedList.size(); i++) {
-					    				System.out.println(sortedList.get(i));
+					    				System.out.println("Name: " + sortedList.get(i).getName() + ", Quantity: " + sortedList.get(i).getQuantity());
 					    			}
 					    		}
 					    		
