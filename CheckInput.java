@@ -73,7 +73,7 @@ public class CheckInput {
 	}
 
 	
-	  //Checks if product exist already in Database. If does dont accept it and ask for new name
+	//Checks if product exist already in Database. If does dont accept it and ask for new name
 
 	public static String getValidProductName() {
 		boolean valid = false;
@@ -99,7 +99,31 @@ public class CheckInput {
 		return input;
 	}
 	 
+	//Checks if warehouse exist already in Database. If does dont accept it and ask for new name
 
+	public static String getValidWarehouseName() {
+		boolean valid = false;
+		Scanner in = new Scanner( System.in );
+		String input = in.nextLine();
+		Warehouse warehouseCheck = null;
+		while(!valid) {
+			ArrayList<Warehouse> warehousesDB = Database.getDatabase().selectWarehouse();
+			for (int i = 0; i < warehousesDB.size(); i++) {
+				if (warehousesDB.get(i).getName().equalsIgnoreCase(input)) {
+					warehouseCheck = warehousesDB.get(i);
+					if(warehouseCheck.getName().equalsIgnoreCase(input)) {
+						System.out.println("Found the warehouse in Database, Enter a new warehouse name");
+						//in.next();
+						input = getValidWarehouseName();
+							
+					}
+				}
+			}
+		//System.out.println("leaving loop");
+		valid = true;
+		}
+		return input;
+	}
 	/*public static String getValidProductName() {
 
 		Scanner scan = new Scanner(System.in);

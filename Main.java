@@ -172,7 +172,7 @@ public class Main {
 			    		if(warehouseMenuChoice == 1) {
 			    			//Implementation to add warehouse here
 			    			System.out.println("What do you want to name the warehouse?");
-			    			String result = CheckInput.getString();
+			    			String result = CheckInput.getValidWarehouseName();
 			    			
 			    			// Create warehouse object to be represented in DB
 			    			Warehouse wares = new Warehouse(result, new ArrayList<>());
@@ -228,7 +228,7 @@ public class Main {
 			    			System.out.println("New product, " + name + ", added to inventory!");
 			    			
 			    			System.out.println("What warehouse do you want to new product in? ");
-			    			String warehouseInput = CheckInput.getString();
+			    			String warehouseInput = CheckInput.getValidWarehouseName();
 			    			ArrayList<Warehouse> temp = Database.getDatabase().selectWarehouse();
 			    			
 			    			Warehouse updateWare = new Warehouse(warehouseInput, null);
