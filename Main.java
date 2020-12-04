@@ -203,7 +203,7 @@ public class Main {
 			    if (menuChoice == 3) {
 			    	boolean productMenu = true;
 			    	while(productMenu) {
-			    		System.out.print("1. Add new Product \n2. Edit Product Edit \n3. Display for products \n4. Go back \n");
+			    		System.out.print("1. Add new Product \n2. Edit Product Info \n3. Display for products \n4. Go back \n");
 			    		int productMenuChoice = CheckInput.getIntRange(1, 4);
 			    		if(productMenuChoice == 1) {
 			    			//Calls product create function and user fills product details
