@@ -243,7 +243,7 @@ public class Main {
 			    					//Split string and store into array of strings
 			    					arrOldProducts = oldProducts.split(",", 0);
 			    					//Add each element of array into the list of products
-			    					for(int k = 0; k < arrOldProducts.length; k ++) {
+			    					for(int k = 0; k < arrOldProducts.length; k++) {
 			    						productsName.add(arrOldProducts[k]);
 			    					}
 			    					//Delete warehouse
@@ -340,8 +340,6 @@ public class Main {
 			    		if(productMenuChoice == 3) {
 			    			boolean productDisplayMenu = true;
 			    			while (productDisplayMenu == true) {
-
-			    				System.out.print("1. Display stock of products \n2. Display products 5 or fewer \n3. Display products quantities by warehouse \n4. Display product information \n5. Go back \n");
 
 			    				System.out.print("1. Display products 5 or fewer \n2. Display products quantities by warehouse \n3. Display product information \n4. Go back \n");
 
