@@ -221,8 +221,8 @@ public class Main {
 			    			int price = CheckInput.getInt();
 			    			
 			    			//New products haven't been sold, so total sales, total cost, total sale, total profit, profit percent start @ 0
-			    			boolean findWarehouse = false;
-			    			while (findWarehouse == false) {
+			    			boolean warehouseLoop = false;
+			    			while (warehouseLoop == false) {
 			    				//Product prod = new Product(name, quantity, cost, price, 0, 0, 0, 0, 0.0);
 				    			
 				    			//Database.getDatabase().add(prod);
@@ -247,7 +247,7 @@ public class Main {
 				    					
 				    					// warehouse found, no error message
 				    					foundWarehouse = true;
-				    					findWarehouse = true;
+				    					warehouseLoop = true;
 				    					Product prod = new Product(name, quantity, cost, price, 0, 0, 0, 0, 0.0);
 						    			Database.getDatabase().add(prod);
 						    			System.out.println("New product, " + name + ", added to inventory!");
