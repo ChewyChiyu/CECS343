@@ -147,6 +147,21 @@ public class CheckInput {
 //
 //	}
 	
+	public static int getYesNo(){
+		boolean valid = false;
+		while( !valid ) {
+			String input = getString();
+			if( input.equalsIgnoreCase("yes") || input.equalsIgnoreCase("y") ) {
+				return 1;
+			} else if( input.equalsIgnoreCase("no") || input.equalsIgnoreCase("n") ) {
+				return 0;
+			} else {
+				System.out.println( "Invalid Input. Enter Y/N" );
+			}
+		}
+		return 0;
+	}	
+	
 	//Work in progress 
 	public static void checkWarehouse(String name) {
 		String warehouseInput = CheckInput.getString();
