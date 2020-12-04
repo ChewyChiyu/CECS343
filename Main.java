@@ -228,24 +228,37 @@ public class Main {
 			    			System.out.println("New product, " + name + ", added to inventory!");
 			    			
 			    			System.out.println("What warehouse do you want to new product in? ");
-			    			String warehouseInput = CheckInput.getValidWarehouseName();
+			    			//String warehouseInput = CheckInput.getValidWarehouseName();
+			    			String warehouseInput = CheckInput.getString();
 			    			ArrayList<Warehouse> temp = Database.getDatabase().selectWarehouse();
 			    			
 			    			Warehouse updateWare = new Warehouse(warehouseInput, null);
 			    			List <String> productsName = new ArrayList<String>();
 			    			String oldProducts = null;
 			    			String[] arrOldProducts = null;
+			    			
+			    			// boolean to track success or failure on matching warehouse to input
+			    			boolean foundWarehouse = false;
 			    			for (int i = 0; i < temp.size(); i++) {
+			    				
 			    				//Look for same warehouse name
 			    				if (temp.get(i).getName().equalsIgnoreCase(warehouseInput)) {
+			    					
+			    					// warehouse found, no error message
+			    					foundWarehouse = true;
+			    					
 			    					//Set all previous products in warehouse to string
 			    					oldProducts = temp.get(i).getProductNames();
+
 			    					//Split string and store into array of strings
 			    					arrOldProducts = oldProducts.split(",", 0);
+			    					
 			    					//Add each element of array into the list of products
 			    					for(int k = 0; k < arrOldProducts.length; k++) {
 			    						productsName.add(arrOldProducts[k]);
 			    					}
+			    					productsName.add(name);
+			    					
 			    					//Delete warehouse
 			    					Database.getDatabase().delete(updateWare);
 			    					//update warehouse with new products list
@@ -257,9 +270,9 @@ public class Main {
 			    					//System.out.println(oldProducts);
 			    					//productsName = oldProducts;
 			    				}
-			    				
-			    				else
-			    					System.out.println("No such warehouse exist");
+			    			}
+			    			if(!foundWarehouse) {
+			    				System.out.println("No such warehouse exists!");
 			    			}
 			    			
 			   
