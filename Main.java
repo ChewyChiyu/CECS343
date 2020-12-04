@@ -359,8 +359,28 @@ public class Main {
 			    				int productDisplayChoice = CheckInput.getIntRange(1, 4);
 			    				
 					    		if(productDisplayChoice == 1) {
-					    			System.out.println("Displaying stocks 5 or fewer \n");
 					    			//Display products with stock 5 or fewer
+					    			System.out.println("Displaying Products with 5 or fewer units left: \n");
+					    			ArrayList<Product> list = Database.getDatabase().selectProduct();
+					    			
+					    			// Empty list to accept entries ordered by descending quantity (<6)
+					    			ArrayList<Product> sortedList = new ArrayList<>();
+					    			
+					    			//Loop to count down from 5 to 0, i value used to compare product's quantity
+					    			for(int i = 5; i >= 0; i--) {
+					    				// loop to iterate through all product's quantities
+					    				for(int j = 0; j < list.size(); j++) {
+					    					// if product quantity is the same as I value, add to list
+					    					if(list.get(j).getQuantity() == i) {
+					    						sortedList.add(list.get(j));
+					    					}
+					    				}
+					    			}
+					    			
+					    			// Print sorted list!
+					    			for(int i = 0; i < sortedList.size(); i++) {
+					    				System.out.println(sortedList.get(i));
+					    			}
 					    		}
 					    		
 					    		if(productDisplayChoice == 2) {
