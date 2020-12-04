@@ -227,11 +227,15 @@ public class Main {
 				    			
 				    			//Database.getDatabase().add(prod);
 				    			//System.out.println("New product, " + name + ", added to inventory!");
-				    			
+			    				ArrayList<Warehouse> temp = Database.getDatabase().selectWarehouse();
 				    			System.out.println("What warehouse do you want to new product in? ");
+				    			for(int j = 0; j < temp.size(); j++) {
+				    				// display warehouses in database
+				    				System.out.println("Warehouse " + temp.get(j).getName());
+				    			}
 				    			//String warehouseInput = CheckInput.getValidWarehouseName();
 				    			String warehouseInput = CheckInput.getString();
-				    			ArrayList<Warehouse> temp = Database.getDatabase().selectWarehouse();
+				    			//ArrayList<Warehouse> temp = Database.getDatabase().selectWarehouse();
 				    			
 				    			Warehouse updateWare = new Warehouse(warehouseInput, null);
 				    			List <String> productsName = new ArrayList<String>();
