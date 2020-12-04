@@ -231,17 +231,27 @@ public class Main {
 			    			String warehouseInput = CheckInput.getString();
 			    			ArrayList<Warehouse> temp = Database.getDatabase().selectWarehouse();
 			    			
-			    			Warehouse updateWare = null;
+			    			Warehouse updateWare = new Warehouse(warehouseInput, null);
 			    			List <String> productsName = new ArrayList<String>();
 			    			String oldProducts = null;
 			    			String[] arrOldProducts = null;
 			    			for (int i = 0; i < temp.size(); i++) {
+			    				//Look for same warehouse name
 			    				if (temp.get(i).getName().equalsIgnoreCase(warehouseInput)) {
+			    					//Set all previous products in warehouse to string
 			    					oldProducts = temp.get(i).getProductNames();
+			    					//Split string and store into array of strings
 			    					arrOldProducts = oldProducts.split(",", 0);
+			    					//Add each element of array into the list of products
 			    					for(int k = 0; k < arrOldProducts.length; k ++) {
 			    						productsName.add(arrOldProducts[k]);
 			    					}
+			    					//Delete warehouse
+			    					Database.getDatabase().delete(updateWare);
+			    					//update warehouse with new products list
+			    					updateWare = new Warehouse(warehouseInput, productsName);
+			    					//add warehouse to database
+			    					Database.getDatabase().add(updateWare);
 			    					
 			    					//System.out.println(arrOldProducts);
 			    					//System.out.println(oldProducts);
