@@ -125,6 +125,7 @@ public class CheckInput {
 		}
 		return input;
 	}
+	
 //	public static String getExactWarehouseName() {
 //
 //		Scanner scan = new Scanner(System.in);
@@ -146,6 +147,7 @@ public class CheckInput {
 //
 //	}
 	
+	//Work in progress 
 	public static void checkWarehouse(String name) {
 		String warehouseInput = CheckInput.getString();
 		ArrayList<Warehouse> temp = Database.getDatabase().selectWarehouse();
