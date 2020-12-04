@@ -384,8 +384,44 @@ public class Main {
 					    		}
 					    		
 					    		if(productDisplayChoice == 2) {
-						    		System.out.println("Displaying products quantities by warehouses \n");
 						    		//Display products by stock by warehouses
+					    			
+					    			// Fetch list of warehouses
+					    			ArrayList<Warehouse> warehouseList = Database.getDatabase().selectWarehouse(); 
+					    			
+					    			//Fetch list of products
+					    			ArrayList<Product> productList = Database.getDatabase().selectProduct();
+					    			
+					    			//Loop through each warehouse in list
+					    			for(int i = 0; i < warehouseList.size(); i++) {
+					    				if(warehouseList.get(i).getProductNames().equals("")) {
+					    					// List is empty, no products to display in this warehouse
+					    					System.out.println("Warehouse " + warehouseList.get(i).getName() + " is empty.");
+					    				}
+					    				else {
+					    					//List has products, display them under warehouse
+					    					System.out.println("Warehouse " + warehouseList.get(i).getName() + " contains: ");
+					    					
+					    					//Fetch String of product names from warehouse
+					    					String productString = warehouseList.get(i).getProductNames();
+					    					
+					    					// Create array of product names stored in warehouse
+					    					String[] arrProduct = productString.split(",", 0);
+					    					
+					    					// Loop through all product names in array
+					    					for(int j = 0; j < arrProduct.length; j++) {
+					    						// Loop through all products in database
+					    						for(int k = 0; k < productList.size(); k++) {
+					    							// Warehouse product name matches on product database
+					    							if(arrProduct[j].equals(productList.get(k).getName())) {
+					    								System.out.println("        Product: " + productList.get(k).getName() + ", Quantity: " + productList.get(k).getQuantity());
+					    							}
+					    						}
+					    					}
+					    				}
+					    			}
+					    			//Formatting print, separates menu from display nicer
+					    			System.out.println("");
 					    		}
 					    		
 					    		if(productDisplayChoice == 3) {
