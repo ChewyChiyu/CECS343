@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class CheckInput {
@@ -124,25 +125,75 @@ public class CheckInput {
 		}
 		return input;
 	}
-	/*public static String getValidProductName() {
+//	public static String getExactWarehouseName() {
+//
+//		Scanner scan = new Scanner(System.in);
+//		boolean flag = true;
+//		String input = " ";
+//		while (flag) {
+//			input = scan.nextLine();
+//			flag = false;
+//			ArrayList<Product> products = Database.getDatabase().selectProduct();
+//			for (Product p : products) {
+//				if (p.getName().equalsIgnoreCase(input))
+//					flag = true;
+//				if (flag == true)
+//					System.out.println("Found the product in Database, Enter a new product name");
+//			}
+//			// reach here means valid name
+//		}
+//		return input;
+//
+//	}
+	
+	public static void checkWarehouse(String name) {
+		String warehouseInput = CheckInput.getString();
+		ArrayList<Warehouse> temp = Database.getDatabase().selectWarehouse();
+		
+		Warehouse updateWare = new Warehouse(warehouseInput, null);
+		List <String> productsName = new ArrayList<String>();
+		String oldProducts = null;
+		String[] arrOldProducts = null;
+		
+		// boolean to track success or failure on matching warehouse to input
+		boolean foundWarehouse = false;
+		for (int i = 0; i < temp.size(); i++) {
+			
+			//Look for same warehouse name
+			if (temp.get(i).getName().equalsIgnoreCase(warehouseInput)) {
+				
+				// warehouse found, no error message
+				foundWarehouse = true;
+				
+				//Set all previous products in warehouse to string
+				oldProducts = temp.get(i).getProductNames();
 
-		Scanner scan = new Scanner(System.in);
-		boolean flag = true;
-		String input = " ";
-		while (flag) {
-			input = scan.nextLine();
-			flag = false;
-			ArrayList<Product> products = Database.getDatabase().selectProduct();
-			for (Product p : products) {
-				if (p.getName().equalsIgnoreCase(input))
-					flag = true;
-				if (flag == true)
-					System.out.println("Found the product in Database, Enter a new product name");
+				//Split string and store into array of strings
+				arrOldProducts = oldProducts.split(",", 0);
+				
+				//Add each element of array into the list of products
+				for(int k = 0; k < arrOldProducts.length; k++) {
+					productsName.add(arrOldProducts[k]);
+				}
+				productsName.add(name);
+				
+				//Delete warehouse
+				Database.getDatabase().delete(updateWare);
+				//update warehouse with new products list
+				updateWare = new Warehouse(warehouseInput, productsName);
+				//add warehouse to database
+				Database.getDatabase().add(updateWare);
+				
+				//System.out.println(arrOldProducts);
+				//System.out.println(oldProducts);
+				//productsName = oldProducts;
 			}
-			// reach here means valid name
 		}
-		return input;
-
-	}*/
-
+		if(!foundWarehouse) {
+			System.out.println("No such warehouse exists!");
+			Scanner in = new Scanner (System.in);
+			String input = in.next();
+			checkWarehouse(input);
+		}
+	}
 }
