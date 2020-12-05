@@ -110,7 +110,7 @@ public class Main {
 			    		if(invoiceMenuChoice == 2) {
 			    			System.out.println("Which invoice do you want to edit?");
 			    			//Implementation to display invoices and edit them
-			    			
+			    		
 			    			System.out.println("Input name of customer:\n");
 			    			String name = CheckInput.getString();
 			    			
@@ -118,7 +118,7 @@ public class Main {
 			    			for(int i = 0; i < edit.size(); i++) {
 	    						if (edit.get(i).getName() == name) {
 	    							System.out.println("What do you want to edit?\n");
-	    							System.out.println("1. Name of Product \n2. Name of Salesperson \n3. Address \n4. Quatity of Product \n5. Zip Code \n6. Bill \n7. Delivery Charge Cost \n7. Sales Tax \n8. Is Invoice Paid? \n9. Was it deliver? \n10. Timestamp \n11. Go Back");
+	    							System.out.println("1. Name of Product \n2. Name of Salesperson \n3. Address \n4. Quatity of Product \n5. Zip Code \n6. Bill \n7. Delivery Charge Cost \n8. Sales Tax \n9. Is Invoice Paid? \n10. Was it deliver? \n11. Timestamp \n12. Go Back");
 	    							int editChoice = CheckInput.getIntRange(1, 11);
 	    						    if (editChoice == 1) {
 	    						    	System.out.println("Input new name of product:\n");
@@ -190,8 +190,7 @@ public class Main {
 	    				    			edit.set(edit, timestamp);
 	    						    }
 	    						}
-				    		}
-			    			
+				    		}	
 			    		}
 			    		if(invoiceMenuChoice == 3) {
 			    			boolean displayInvoiceMenu = true;

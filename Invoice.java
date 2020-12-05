@@ -50,11 +50,6 @@ public class Invoice{
 	public String getData(){ return name + "," + productName + "," + salespersonName + "," + address + "," + quantityBuying + "," + zipCode + "," + bill + "," + deliveryChargeCost + "," + salesTax + "," + invoicePaid + "," + deliveryCharge + "," + timeStamp; }
 	public boolean equals(Invoice o){ return name.equals(o.name); }
 
-	public void set(ArrayList<Invoice> edit, String productName2) {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 
 
