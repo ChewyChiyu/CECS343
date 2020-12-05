@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /*
 
 Invoice
@@ -19,10 +21,11 @@ int salesTax: tax to be charged for the purchase
 public class Invoice{
 
 	private String name, productName, salespersonName, address;
-	private int quantityBuying, zipCode, bill, deliveryChargeCost, salesTax, invoicePaid, deliveryCharge;;
+	private int quantityBuying, zipCode, deliveryChargeCost, salesTax, invoicePaid, deliveryCharge;;
+	private double bill;
 	private long timeStamp;
 
-	public Invoice(String name, String productName, String salespersonName, String address, int quantityBuying, int zipCode, int bill, int deliveryChargeCost, int salesTax, int invoicePaid, int deliveryCharge, long timeStamp){
+	public Invoice(String name, String productName, String salespersonName, String address, int quantityBuying, int zipCode, double bill, int deliveryChargeCost, int salesTax, int invoicePaid, int deliveryCharge, long timeStamp){
 		this.name = name;
 		this.productName = productName;
 		this.salespersonName = salespersonName;
@@ -35,14 +38,22 @@ public class Invoice{
 		this.invoicePaid = invoicePaid;
 		this.deliveryCharge = deliveryCharge;
 		this.timeStamp = timeStamp;
-	} 
-
+	}
+	
+	public String getName() { return name; }
+	public double getBill(){ return bill; }
+	public int getSalesTax() { return salesTax; }
+	public int getInvoicePaid(){ return invoicePaid; }
+	public long getTimeStamp(){ return timeStamp; }
 
 	public String toString(){ return "name: " + name + " productName: " + productName + " address: " + address; }
 	public String getData(){ return name + "," + productName + "," + salespersonName + "," + address + "," + quantityBuying + "," + zipCode + "," + bill + "," + deliveryChargeCost + "," + salesTax + "," + invoicePaid + "," + deliveryCharge + "," + timeStamp; }
 	public boolean equals(Invoice o){ return name.equals(o.name); }
-	public int getInvoicePaid(){ return invoicePaid; }
-	public long getTimeStamp(){ return timeStamp; }
+
+	public void set(ArrayList<Invoice> edit, String productName2) {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 
