@@ -114,85 +114,92 @@ public class Main {
 			    			System.out.println("Input name of customer:\n");
 			    			String name = CheckInput.getString();
 			    			
-			    			ArrayList<Invoice> edit = Database.getDatabase().selectInvoice();
-			    			for(int i = 0; i < edit.size(); i++) {
-	    						if (edit.get(i).getName() == name) {
-	    							System.out.println("What do you want to edit?\n");
-	    							System.out.println("1. Name of Product \n2. Name of Salesperson \n3. Address \n4. Quatity of Product \n5. Zip Code \n6. Bill \n7. Delivery Charge Cost \n8. Sales Tax \n9. Is Invoice Paid? \n10. Was it deliver? \n11. Timestamp");
-	    							int editChoice = CheckInput.getIntRange(1, 11);
-	    						    if (editChoice == 1) {
-	    						    	System.out.println("Input new name of product:\n");
-	    				    			String productName = CheckInput.getString();
-	    				    			edit.get(i).setProductName(productName);
-	    						    }
-	    						    if (editChoice == 2) {
-	    						    	System.out.println("Input new name of salespersonName:\n");
-	    				    			String salespersonName = CheckInput.getString();
+			    			boolean displayEditMenu = true;
+			    			while(displayEditMenu) {
+			    				ArrayList<Invoice> edit = Database.getDatabase().selectInvoice();
+			    				for(int i = 0; i < edit.size(); i++) {
+			    					if (edit.get(i).getName() == name) {
+			    						System.out.println("What do you want to edit?\n");
+			    						System.out.println("1. Name of Product \n2. Name of Salesperson \n3. Address \n4. Quatity of Product \n5. Zip Code \n6. Bill \n7. Delivery Charge Cost \n8. Sales Tax \n9. Is Invoice Paid? \n10. Was it deliver? \n11. Timestamp \n12. Go back");
+			    						int editChoice = CheckInput.getIntRange(1, 12);
+			    						if (editChoice == 1) {
+			    							System.out.println("Input new name of product:\n");
+			    							String productName = CheckInput.getString();
+			    							edit.get(i).setProductName(productName);
+			    						}
+			    						if (editChoice == 2) {
+			    							System.out.println("Input new name of salespersonName:\n");
+			    							String salespersonName = CheckInput.getString();
 	    				    			edit.get(i).setSalespersonName(salespersonName);
-	    						    }
-	    						    if (editChoice == 3) {
-	    						    	System.out.println("Input new billing address of customer:\n");
-	    				    			String address = CheckInput.getString();
-	    				    			edit.get(i).setAddress(address);
-	    						    }
-	    						    if (editChoice == 4) {
-	    						    	System.out.println("Input new quantity of the product:\n");
-	    				    			int quantityBuying = CheckInput.getInt();
-	    				    			edit.get(i).setQuantityBuying(quantityBuying);
-	    						    }
-	    						    if (editChoice == 5) {
-	    						    	System.out.println("Input new zip code of customer:\n");
-	    				    			int zipCode = CheckInput.getInt();
-	    				    			edit.get(i).setZipCode(zipCode);
-	    						    }
-	    						    if (editChoice == 6) {
-	    						    	System.out.println("Input 1 to deduct invoice or 0 to charge:\n");
-	    				    			int invoiceEdit = CheckInput.getIntRange(0, 1);
-	    				    			if (invoiceEdit == 1) {
-	    				    				long time = edit.get(i).getTimeStamp();
-	    				    				if (edit.get(i).getInvoicePaid() == 1) {
-	    				    					long tenDays = 864000000;
-	    				    					if (time < tenDays) {
-	    				    						double newBill = edit.get(i).getBill() - (edit.get(i).getBill() * 0.01);
-	    				    						edit.get(i).setBill(newBill);
-	    				    					}
-	    				    				}
-	    				    			}
-	    				    			if (invoiceEdit == 0) {
-	    				    				if (edit.get(i).getInvoicePaid() == 0) {
-	    				    					long time = edit.get(i).getTimeStamp();
-	    				    					long thirtyDays = 2592000000l;
-	    				    					if (time > thirtyDays) {
-	    				    						double newBill = edit.get(i).getBill() + (edit.get(i).getBill() * 0.02);
-	    				    						edit.get(i).setBill(newBill);
-	    				    					}
-	    				    				}
-	    				    			}
-	    						    }
-	    						    if (editChoice == 7) {
-	    						    	System.out.println("Input amount to add to tax charge:\n");
-	    				    			int salesTax = CheckInput.getInt();
-	    				    			int newSalesTax = edit.get(i).getSalesTax() + salesTax;
-	    				    			edit.get(i).setSalesTax(newSalesTax);
-	    						    }
-	    						    if (editChoice == 8) {
-	    						    	System.out.println("Input 1 if invoice was paid or 0 if invoice was not paid:\n");
-	    				    			int invoicePaid = CheckInput.getIntRange(0,1);
-	    				    			edit.get(i).setInvoicePaid(invoicePaid);
-	    						    }
-	    						    if (editChoice == 10) {
-	    						    	System.out.println("Input 1 if deliver or 0 if not deliver:\n");
-	    				    			int deliveryCharge = CheckInput.getIntRange(0,1);
-	    				    			edit.get(i).setDeliveryCharge(deliveryCharge);
-	    						    }
-	    						    if (editChoice == 11) {
-	    						    	System.out.println("Input date of invoice:\n");
-	    				    			long timestamp = System.currentTimeMillis();
-	    				    			edit.get(i).setTimeStamp(timestamp);
-	    						    }
-	    						}
-	    						System.out.println("Invoice was changed!\n" + edit.get(i).getData() + "\n");
-				    		}	
+			    						}	
+			    						if (editChoice == 3) {
+			    							System.out.println("Input new billing address of customer:\n");
+			    							String address = CheckInput.getString();
+			    							edit.get(i).setAddress(address);
+			    						}
+			    						if (editChoice == 4) {
+			    							System.out.println("Input new quantity of the product:\n");
+			    							int quantityBuying = CheckInput.getInt();
+			    							edit.get(i).setQuantityBuying(quantityBuying);
+			    						}
+			    						if (editChoice == 5) {
+			    							System.out.println("Input new zip code of customer:\n");
+			    							int zipCode = CheckInput.getInt();
+			    							edit.get(i).setZipCode(zipCode);
+			    						}
+			    						if (editChoice == 6) {
+			    							System.out.println("Input 1 to deduct invoice or 0 to charge:\n");
+			    							int invoiceEdit = CheckInput.getIntRange(0, 1);
+			    							if (invoiceEdit == 1) {
+			    								long time = edit.get(i).getTimeStamp();
+			    								if (edit.get(i).getInvoicePaid() == 1) {
+			    									long tenDays = 864000000;
+			    									if (time < tenDays) {
+			    										double newBill = edit.get(i).getBill() - (edit.get(i).getBill() * 0.01);
+			    										edit.get(i).setBill(newBill);
+			    									}
+			    								}
+			    							}
+			    							if (invoiceEdit == 0) {
+			    								if (edit.get(i).getInvoicePaid() == 0) {
+			    									long time = edit.get(i).getTimeStamp();
+			    									long thirtyDays = 2592000000l;
+			    									if (time > thirtyDays) {
+			    										double newBill = edit.get(i).getBill() + (edit.get(i).getBill() * 0.02);
+			    										edit.get(i).setBill(newBill);
+			    									}
+			    								}
+			    							}
+			    						}
+			    						if (editChoice == 7) {
+			    							System.out.println("Input amount to add to tax charge:\n");
+			    							int salesTax = CheckInput.getInt();
+			    							int newSalesTax = edit.get(i).getSalesTax() + salesTax;
+			    							edit.get(i).setSalesTax(newSalesTax);
+			    						}
+			    						if (editChoice == 8) {
+			    							System.out.println("Input 1 if invoice was paid or 0 if invoice was not paid:\n");
+			    							int invoicePaid = CheckInput.getIntRange(0,1);
+			    							edit.get(i).setInvoicePaid(invoicePaid);
+			    						}
+			    						if (editChoice == 10) {
+			    							System.out.println("Input 1 if deliver or 0 if not deliver:\n");
+			    							int deliveryCharge = CheckInput.getIntRange(0,1);
+			    							edit.get(i).setDeliveryCharge(deliveryCharge);
+			    						}
+			    						if (editChoice == 11) {
+			    							System.out.println("Input date of invoice:\n");
+			    							long timestamp = System.currentTimeMillis();
+			    							edit.get(i).setTimeStamp(timestamp);
+			    						}
+			    						if (editChoice == 11) {
+			    							displayEditMenu = false;
+			    							break;
+			    						}
+			    						System.out.println("Invoice was changed!\n" + edit.get(i).getData() + "\n");
+			    					}
+			    				}
+			    			}
 			    		}
 			    		if(invoiceMenuChoice == 3) {
 			    			boolean displayInvoiceMenu = true;
@@ -215,10 +222,12 @@ public class Main {
 			    					});
 
 			    					for(int i = 0; i < invoices.size(); i++) {
-			    						System.out.println(invoices.get(i));
-										/*
-										 * if(i == invoices.size()) { System.out.println(""); }
-										 */
+			    						if (invoices.get(i).getInvoicePaid() == 0) {
+			    							System.out.println(invoices.get(i));
+			    							/*
+			    							 * if(i == invoices.size()) { System.out.println(""); }
+			    							 */
+			    						}
 						    		}
 			    				}	
 			    				if (displayInvoiceChoice == 2) {
