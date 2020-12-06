@@ -52,9 +52,10 @@ public class Invoice{
 	public void setQuantityBuying(int quantity) { quantityBuying = quantity; }
 	public void setZipCode(int customerZipCode) { zipCode = customerZipCode; }
 	public void setBill(double invoiceBill) { bill = invoiceBill; }
+	public void setDeliveryChargeCost(int chargeCost) { deliveryChargeCost = chargeCost; }
 	public void setSalesTax(int sales) { salesTax = sales; }
 	public void setInvoicePaid(int paid) { invoicePaid = paid; }
-	public void setDeliveryCharge(int charge) { deliveryCharge = charge; }
+	public void setDeliveryCharge(int delivery) { deliveryCharge = delivery; }
 	public void setTimeStamp(long time) { timeStamp = time; }
 	
 	public String toString(){ return "name: " + name + " productName: " + productName + " address: " + address; }
