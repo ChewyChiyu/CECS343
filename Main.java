@@ -60,44 +60,56 @@ public class Main {
 			    		System.out.print("What do you want to do? \n1. Create Invoice \n2. Edit Invoice \n3. Display Invoices\n4. Go back \n");
 			    		int invoiceMenuChoice = CheckInput.getIntRange(1,4);
 			    		if(invoiceMenuChoice == 1) {
-			    			System.out.println("Creating new invoice...\n");
+			    			System.out.println("Creating new invoice...");
 			    			
 			    			//Implementation of the filling of invoice
-			    			System.out.println("Input name of customer:\n");
+			    			System.out.println("Input name of customer:");
 			    			String name = CheckInput.getString();
+			    			System.out.println();
 			    			
-			    			System.out.println("Input name of product:\n");
+			    			System.out.println("Input name of product:");
 			    			String productName = CheckInput.getString();
+			    			System.out.println();
 			    			
-			    			System.out.println("Input name of salespersonName:\n");
+			    			System.out.println("Input name of salespersonName:");
 			    			String salespersonName = CheckInput.getString();
+			    			System.out.println();
 			    			
-			    			System.out.println("Input billing address of customer:\n");
+			    			System.out.println("Input billing address of customer:");
 			    			String address = CheckInput.getString();
+			    			System.out.println();
 			    			
-			    			System.out.println("Input quantity of the product:\n");
+			    			System.out.println("Input quantity of the product:");
 			    			int quantityBuying = CheckInput.getInt();
+			    			System.out.println();
 			    			
-			    			System.out.println("Input zip code of customer:\n");
+			    			System.out.println("Input zip code of customer:");
 			    			int zipCode = CheckInput.getInt();
+			    			System.out.println();
 			    			
-			    			System.out.println("Input current invoice balance of customer:\n");
+			    			System.out.println("Input current invoice balance of customer:");
 			    			double bill = CheckInput.getInt();
+			    			System.out.println();
 			    			
-			    			System.out.println("Input deliver charge if product delivered:\n");
+			    			System.out.println("Input deliver charge if product delivered:");
 			    			int deliveryChargeCost = CheckInput.getInt();
+			    			System.out.println();
 			    			
 			    			System.out.println("Input tax charge:\n");
 			    			int salesTax = CheckInput.getInt();
+			    			System.out.println();
 			    			
-			    			System.out.println("Input 1 if invoice was paid or 0 if invoice was not paid:\n");
+			    			System.out.println("Input 1 if invoice was paid or 0 if invoice was not paid:");
 			    			int invoicePaid = CheckInput.getIntRange(0,1);
+			    			System.out.println();
 			    			
-			    			System.out.println("Input 1 if deliver or 0 if not deliver:\n");
+			    			System.out.println("Input 1 if deliver or 0 if not deliver:");
 			    			int deliveryCharge = CheckInput.getIntRange(0,1);
+			    			System.out.println();
 			    			
 			    			System.out.println("Input date of invoice:\n");
 			    			long timestamp = System.currentTimeMillis();
+			    			System.out.println();
 			    			
 			    			Invoice personInvoice = new Invoice(name, productName, salespersonName, address, quantityBuying, zipCode, bill, deliveryChargeCost, salesTax, invoicePaid, deliveryCharge, timestamp);
 
@@ -123,33 +135,39 @@ public class Main {
 			    						System.out.println("1. Name of Product \n2. Name of Salesperson \n3. Address \n4. Quatity of Product \n5. Zip Code \n6. Bill \n7. Delivery Charge Cost \n8. Sales Tax \n9. Is Invoice Paid? \n10. Was it deliver? \n11. Timestamp \n12. Go back");
 			    						int editChoice = CheckInput.getIntRange(1, 12);
 			    						if (editChoice == 1) {
-			    							System.out.println("Input new name of product:\n");
+			    							System.out.println("Input new name of product:");
 			    							String productName = CheckInput.getString();
+			    							System.out.println();
 			    							edit.get(i).setProductName(productName);
 			    						}
 			    						if (editChoice == 2) {
-			    							System.out.println("Input new name of salespersonName:\n");
+			    							System.out.println("Input new name of salespersonName:");
 			    							String salespersonName = CheckInput.getString();
-	    				    			edit.get(i).setSalespersonName(salespersonName);
+			    							System.out.println();
+			    							edit.get(i).setSalespersonName(salespersonName);
 			    						}	
 			    						if (editChoice == 3) {
-			    							System.out.println("Input new billing address of customer:\n");
+			    							System.out.println("Input new billing address of customer:");
 			    							String address = CheckInput.getString();
+			    							System.out.println();
 			    							edit.get(i).setAddress(address);
 			    						}
 			    						if (editChoice == 4) {
-			    							System.out.println("Input new quantity of the product:\n");
+			    							System.out.println("Input new quantity of the product:");
 			    							int quantityBuying = CheckInput.getInt();
+			    							System.out.println();
 			    							edit.get(i).setQuantityBuying(quantityBuying);
 			    						}
 			    						if (editChoice == 5) {
-			    							System.out.println("Input new zip code of customer:\n");
+			    							System.out.println("Input new zip code of customer:");
 			    							int zipCode = CheckInput.getInt();
+			    							System.out.println();
 			    							edit.get(i).setZipCode(zipCode);
 			    						}
 			    						if (editChoice == 6) {
-			    							System.out.println("Input 1 to deduct invoice or 0 to charge:\n");
+			    							System.out.println("Input 1 to deduct invoice or 0 to charge:");
 			    							int invoiceEdit = CheckInput.getIntRange(0, 1);
+			    							System.out.println();
 			    							if (invoiceEdit == 1) {
 			    								long time = edit.get(i).getTimeStamp();
 			    								if (edit.get(i).getInvoicePaid() == 1) {
@@ -172,24 +190,28 @@ public class Main {
 			    							}
 			    						}
 			    						if (editChoice == 7) {
-			    							System.out.println("Input amount to add to tax charge:\n");
+			    							System.out.println("Input amount to add to tax charge:");
 			    							int salesTax = CheckInput.getInt();
+			    							System.out.println();
 			    							int newSalesTax = edit.get(i).getSalesTax() + salesTax;
 			    							edit.get(i).setSalesTax(newSalesTax);
 			    						}
 			    						if (editChoice == 8) {
-			    							System.out.println("Input 1 if invoice was paid or 0 if invoice was not paid:\n");
+			    							System.out.println("Input 1 if invoice was paid or 0 if invoice was not paid:");
 			    							int invoicePaid = CheckInput.getIntRange(0,1);
+			    							System.out.println();
 			    							edit.get(i).setInvoicePaid(invoicePaid);
 			    						}
 			    						if (editChoice == 10) {
-			    							System.out.println("Input 1 if deliver or 0 if not deliver:\n");
+			    							System.out.println("Input 1 if deliver or 0 if not deliver:");
 			    							int deliveryCharge = CheckInput.getIntRange(0,1);
+			    							System.out.println();
 			    							edit.get(i).setDeliveryCharge(deliveryCharge);
 			    						}
 			    						if (editChoice == 11) {
-			    							System.out.println("Input date of invoice:\n");
+			    							System.out.println("Input date of invoice:");
 			    							long timestamp = System.currentTimeMillis();
+			    							System.out.println();
 			    							edit.get(i).setTimeStamp(timestamp);
 			    						}
 			    						if (editChoice == 11) {
@@ -197,6 +219,10 @@ public class Main {
 			    							break;
 			    						}
 			    						System.out.println("Invoice was changed!\n" + edit.get(i).getData() + "\n");
+			    					}
+			    					else {
+			    						System.out.println(name + " doesn't exist!");
+			    						break;
 			    					}
 			    				}
 			    			}
