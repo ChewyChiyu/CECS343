@@ -46,13 +46,19 @@ public class Invoice{
 	public int getInvoicePaid(){ return invoicePaid; }
 	public long getTimeStamp(){ return timeStamp; }
 
+	public void setProductName(String product) { productName = product; }
+	public void setSalespersonName(String salesperson) { salespersonName = salesperson; }
+	public void setAddress(String customerAddress) { address = customerAddress; }
+	public void setQuantityBuying(int quantity) { quantityBuying = quantity; }
+	public void setZipCode(int customerZipCode) { zipCode = customerZipCode; }
+	public void setBill(double invoiceBill) { bill = invoiceBill; }
+	public void setSalesTax(int sales) { salesTax = sales; }
+	public void setInvoicePaid(int paid) { invoicePaid = paid; }
+	public void setDeliveryCharge(int charge) { deliveryCharge = charge; }
+	public void setTimeStamp(long time) { timeStamp = time; }
+	
 	public String toString(){ return "name: " + name + " productName: " + productName + " address: " + address; }
 	public String getData(){ return name + "," + productName + "," + salespersonName + "," + address + "," + quantityBuying + "," + zipCode + "," + bill + "," + deliveryChargeCost + "," + salesTax + "," + invoicePaid + "," + deliveryCharge + "," + timeStamp; }
 	public boolean equals(Invoice o){ return name.equals(o.name); }
-
-
-
-
-
 
 }
