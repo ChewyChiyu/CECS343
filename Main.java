@@ -143,6 +143,8 @@ public class Main {
 			    					String productName = CheckInput.getString();
 			    					System.out.println();
 			    					edit.get(num).setProductName(productName);
+			    					Database.getDatabase().delete(edit.get(num));
+			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
 			    				if (editChoice == 2) {
@@ -150,6 +152,8 @@ public class Main {
 			    					String salespersonName = CheckInput.getString();
 			    					System.out.println();
 			    					edit.get(num).setSalespersonName(salespersonName);
+			    					Database.getDatabase().delete(edit.get(num));
+			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}	
 			    				if (editChoice == 3) {
@@ -157,6 +161,8 @@ public class Main {
 			    					String address = CheckInput.getString();
 			    					System.out.println();
 			    					edit.get(num).setAddress(address);
+			    					Database.getDatabase().delete(edit.get(num));
+			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
 			    				if (editChoice == 4) {
@@ -164,6 +170,8 @@ public class Main {
 			    					int quantityBuying = CheckInput.getInt();
 			    					System.out.println();
 			    					edit.get(num).setQuantityBuying(quantityBuying);
+			    					Database.getDatabase().delete(edit.get(num));
+			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
 			    				if (editChoice == 5) {
@@ -171,6 +179,8 @@ public class Main {
 			    					int zipCode = CheckInput.getInt();
 			    					System.out.println();
 			    					edit.get(num).setZipCode(zipCode);
+			    					Database.getDatabase().delete(edit.get(num));
+			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
 			    				if (editChoice == 6) {
@@ -197,13 +207,17 @@ public class Main {
 			    							}
 			    						}
 			    					}
+			    					Database.getDatabase().delete(edit.get(num));
+			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
-			    				if (editChoice == 8) {
+			    				if (editChoice == 7) {
 			    					System.out.println("Input new delivery charge:");
 			    					int deliveryChargeCost = CheckInput.getInt();
 					    			System.out.println();
 			    					edit.get(num).setDeliveryChargeCost(deliveryChargeCost);
+			    					Database.getDatabase().delete(edit.get(num));
+			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
 			    				if (editChoice == 8) {
@@ -212,6 +226,8 @@ public class Main {
 			    					System.out.println();
 			    					int newSalesTax = edit.get(num).getSalesTax() + salesTax;
 			    					edit.get(num).setSalesTax(newSalesTax);
+			    					Database.getDatabase().delete(edit.get(num));
+			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
 			    				if (editChoice == 9) {
@@ -219,6 +235,8 @@ public class Main {
 			    					int invoicePaid = CheckInput.getIntRange(0,1);
 			    					System.out.println();
 			    					edit.get(num).setInvoicePaid(invoicePaid);
+			    					Database.getDatabase().delete(edit.get(num));
+			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
 			    				if (editChoice == 10) {
@@ -226,6 +244,8 @@ public class Main {
 			    					int deliveryCharge = CheckInput.getIntRange(0,1);
 			    					System.out.println();
 			    					edit.get(num).setDeliveryCharge(deliveryCharge);
+			    					Database.getDatabase().delete(edit.get(num));
+			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
 			    				if (editChoice == 11) {
@@ -233,6 +253,8 @@ public class Main {
 			    					long timestamp = System.currentTimeMillis();
 			    					System.out.println();
 			    					edit.get(num).setTimeStamp(timestamp);
+			    					Database.getDatabase().delete(edit.get(num));
+			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
 			    				if (editChoice == 12) {

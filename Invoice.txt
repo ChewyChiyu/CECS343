@@ -1,4 +1,3 @@
 Manuel,computer,John,123 west ave,123,90015,123.0,0,12,1,0,1607221277497
 Doe,phone,b,69 east street,69,90015,500.0,0,8,1,0,1607222923291
-Felix,stereo,b,135 south street,150,12345,150.0,50,10,0,1,1607223226134
-Ian,radio,a,987 north hollywood,50,98765,60.0,0,10,0,0,1607223363455
+Felix,stereo,b,135 south street,150,12345,150.0,20,10,0,1,1607223226134
