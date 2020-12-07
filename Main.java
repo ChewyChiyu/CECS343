@@ -146,7 +146,7 @@ public class Main {
 			    			while(editInvoiceMenu) {
 			    				System.out.println("What do you want to edit?\n");
 			    				System.out.println("1. Name of Product \n2. Name of Salesperson \n3. Address \n4. City \n5. State \n6. Quatity of Product \n7. Zip Code \n8. Bill \n9. Delivery Charge Cost \n10. Sales Tax \n11. Is Invoice Paid? \n12. Was it deliver? \n13. Timestamp \n14. Go back");
-			    				int editChoice = CheckInput.getIntRange(1, 12);
+			    				int editChoice = CheckInput.getIntRange(1, 14);
 			    				if (editChoice == 1) {
 			    					System.out.println("Input new name of product:");
 			    					String productName = CheckInput.getString();
