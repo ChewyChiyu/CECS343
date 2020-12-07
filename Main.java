@@ -133,10 +133,10 @@ public class Main {
 			    			//Implementation to display invoices and edit them
 			    		
 			    			System.out.println("Input name of customer:\n");
-			    			String name = CheckInput.getValidCustomerName();
+			    			String name = CheckInput.getString();
 			    			
 			    			ArrayList<Invoice> edit = Database.getDatabase().selectInvoice();
-			    			//System.out.println();
+			    			System.out.println()
 			    			int num = 0;
 			    			for(int i = 0; i < edit.size(); i++) {
 			    				if (edit.get(i).getName().equals(name)) {
