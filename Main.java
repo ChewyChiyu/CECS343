@@ -28,6 +28,7 @@ public class Main {
 					Owner o = new Owner(userName, password);
 					Database.getDatabase().add(o);
 					accountPassword = true;
+					//break;
 				}
 				else
 					System.out.println("Enter matching passwords");
@@ -79,12 +80,12 @@ public class Main {
 			    			String address = CheckInput.getString();
 			    			System.out.println();
 			    			
-			    			System.out.println("Input quantity of the product:");
-			    			int quantityBuying = CheckInput.getInt();
-			    			System.out.println();
-			    			
 			    			System.out.println("Input zip code of customer:");
 			    			int zipCode = CheckInput.getInt();
+			    			System.out.println();
+			    			
+			    			System.out.println("Input quantity of the product:");
+			    			int quantityBuying = CheckInput.getInt();
 			    			System.out.println();
 			    			
 			    			System.out.println("Input current invoice balance of customer:");
@@ -99,12 +100,12 @@ public class Main {
 			    			int salesTax = CheckInput.getInt();
 			    			System.out.println();
 			    			
-			    			System.out.println("Input 1 if invoice was paid or 0 if invoice was not paid:");
-			    			int invoicePaid = CheckInput.getIntRange(0,1);
+			    			System.out.println("Input Y if invoice was paid or N if invoice was not paid:");
+			    			int invoicePaid = CheckInput.getYesNo();
 			    			System.out.println();
 			    			
-			    			System.out.println("Input 1 if deliver or 0 if not deliver:");
-			    			int deliveryCharge = CheckInput.getIntRange(0,1);
+			    			System.out.println("Input Y if deliver or N if not deliver:");
+			    			int deliveryCharge = CheckInput.getYesNo();
 			    			System.out.println();
 			    			
 			    			System.out.println("Input date of invoice:\n");
@@ -231,8 +232,8 @@ public class Main {
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
 			    				if (editChoice == 9) {
-			    					System.out.println("Input 1 if invoice was paid or 0 if invoice was not paid:");
-			    					int invoicePaid = CheckInput.getIntRange(0,1);
+			    					System.out.println("Input Y if invoice was paid or N if invoice was not paid:");
+			    					int invoicePaid = CheckInput.getYesNo();
 			    					System.out.println();
 			    					edit.get(num).setInvoicePaid(invoicePaid);
 			    					Database.getDatabase().delete(edit.get(num));
@@ -240,8 +241,8 @@ public class Main {
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
 			    				if (editChoice == 10) {
-			    					System.out.println("Input 1 if deliver or 0 if not deliver:");
-			    					int deliveryCharge = CheckInput.getIntRange(0,1);
+			    					System.out.println("Input Y if deliver or N if not deliver:");
+			    					int deliveryCharge = CheckInput.getYesNo();
 			    					System.out.println();
 			    					edit.get(num).setDeliveryCharge(deliveryCharge);
 			    					Database.getDatabase().delete(edit.get(num));
@@ -819,7 +820,7 @@ public class Main {
 		while (login) {	
 			boolean checkPassResult = password.equals(password2);
 			if (checkPassResult) {
-				System.out.println("Saving password");
+				System.out.println("Saving password, restart application to log in");
 				return true;
 				
 			}
