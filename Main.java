@@ -80,6 +80,14 @@ public class Main {
 			    			String address = CheckInput.getString();
 			    			System.out.println();
 			    			
+			    			System.out.println("Input city of customer:");
+			    			String city = CheckInput.getString();
+			    			System.out.println(); 
+			    			
+			    			System.out.println("Input state of customer:");
+			    			String state = CheckInput.getString();
+			    			System.out.println();
+			    			
 			    			System.out.println("Input zip code of customer:");
 			    			int zipCode = CheckInput.getInt();
 			    			System.out.println();
@@ -112,7 +120,7 @@ public class Main {
 			    			long timestamp = System.currentTimeMillis();
 			    			System.out.println();
 			    			
-			    			Invoice personInvoice = new Invoice(name, productName, salespersonName, address, quantityBuying, zipCode, bill, deliveryChargeCost, salesTax, invoicePaid, deliveryCharge, timestamp);
+			    			Invoice personInvoice = new Invoice(name, productName, salespersonName, address, city, state, quantityBuying, zipCode, bill, deliveryChargeCost, salesTax, invoicePaid, deliveryCharge, timestamp);
 
 			    			// List <Invoice> invoice = new ArrayList<Invoice>();
 			    			// invoice.add(personInvoice);

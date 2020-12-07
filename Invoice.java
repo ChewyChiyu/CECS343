@@ -20,12 +20,12 @@ int salesTax: tax to be charged for the purchase
 
 public class Invoice{
 
-	private String name, productName, salespersonName, address;
+	private String name, productName, salespersonName, address, state, city;
 	private int quantityBuying, zipCode, deliveryChargeCost, salesTax, invoicePaid, deliveryCharge;;
 	private double bill;
 	private long timeStamp;
 
-	public Invoice(String name, String productName, String salespersonName, String address, int quantityBuying, int zipCode, double bill, int deliveryChargeCost, int salesTax, int invoicePaid, int deliveryCharge, long timeStamp){
+	public Invoice(String name, String productName, String salespersonName, String address, String state, String city, int quantityBuying, int zipCode, double bill, int deliveryChargeCost, int salesTax, int invoicePaid, int deliveryCharge, long timeStamp){
 		this.name = name;
 		this.productName = productName;
 		this.salespersonName = salespersonName;
@@ -38,6 +38,8 @@ public class Invoice{
 		this.invoicePaid = invoicePaid;
 		this.deliveryCharge = deliveryCharge;
 		this.timeStamp = timeStamp;
+		this.state = state;
+		this.city = city;
 	}
 	
 	public String getName() { return name; }
@@ -58,8 +60,8 @@ public class Invoice{
 	public void setDeliveryCharge(int delivery) { deliveryCharge = delivery; }
 	public void setTimeStamp(long time) { timeStamp = time; }
 	
-	public String toString(){ return "name: " + name + " productName: " + productName + " address: " + address +", " + zipCode; }
-	public String getData(){ return name + "," + productName + "," + salespersonName + "," + address + "," + quantityBuying + "," + zipCode + "," + bill + "," + deliveryChargeCost + "," + salesTax + "," + invoicePaid + "," + deliveryCharge + "," + timeStamp; }
+	public String toString(){ return "name: " + name + " productName: " + productName + " address: " + address +", " + city +", "+ state + ", " + zipCode; }
+	public String getData(){ return name + "," + productName + "," + salespersonName + "," + address + "," + city + "," + state + "," + quantityBuying + "," + zipCode + "," + bill + "," + deliveryChargeCost + "," + salesTax + "," + invoicePaid + "," + deliveryCharge + "," + timeStamp; }
 	public boolean equals(Invoice o){ return name.equals(o.name); }
 
 }
