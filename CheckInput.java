@@ -100,6 +100,29 @@ public class CheckInput {
 		return input;
 	}
 	 
+	public static String getValidCustomerName() {
+		boolean valid = false;
+		Scanner in = new Scanner( System.in );
+		String input = in.nextLine();
+		Invoice invoiceCheck = null;
+		while(!valid) {
+			ArrayList<Invoice> invoicesDB = Database.getDatabase().selectInvoice();
+			for (int i = 0; i < invoicesDB.size(); i++) {
+				if (invoicesDB.get(i).getName().equalsIgnoreCase(input)) {
+					invoiceCheck = invoicesDB.get(i);
+					if(invoiceCheck.getName().equalsIgnoreCase(input)) {
+						System.out.println("Found the product in Database, Enter a new product name");
+						//in.next();
+						input = getValidCustomerName();
+							
+					}
+				}
+			}
+		//System.out.println("leaving loop");
+		valid = true;
+		}
+		return input;
+	}
 	//Checks if warehouse exist already in Database. If does dont accept it and ask for new name
 
 	public static String getValidWarehouseName() {
@@ -161,56 +184,4 @@ public class CheckInput {
 		}
 		return 0;
 	}	
-	
-	//Work in progress 
-	public static void checkWarehouse(String name) {
-		String warehouseInput = CheckInput.getString();
-		ArrayList<Warehouse> temp = Database.getDatabase().selectWarehouse();
-		
-		Warehouse updateWare = new Warehouse(warehouseInput, null);
-		List <String> productsName = new ArrayList<String>();
-		String oldProducts = null;
-		String[] arrOldProducts = null;
-		
-		// boolean to track success or failure on matching warehouse to input
-		boolean foundWarehouse = false;
-		for (int i = 0; i < temp.size(); i++) {
-			
-			//Look for same warehouse name
-			if (temp.get(i).getName().equalsIgnoreCase(warehouseInput)) {
-				
-				// warehouse found, no error message
-				foundWarehouse = true;
-				
-				//Set all previous products in warehouse to string
-				oldProducts = temp.get(i).getProductNames();
-
-				//Split string and store into array of strings
-				arrOldProducts = oldProducts.split(",", 0);
-				
-				//Add each element of array into the list of products
-				for(int k = 0; k < arrOldProducts.length; k++) {
-					productsName.add(arrOldProducts[k]);
-				}
-				productsName.add(name);
-				
-				//Delete warehouse
-				Database.getDatabase().delete(updateWare);
-				//update warehouse with new products list
-				updateWare = new Warehouse(warehouseInput, productsName);
-				//add warehouse to database
-				Database.getDatabase().add(updateWare);
-				
-				//System.out.println(arrOldProducts);
-				//System.out.println(oldProducts);
-				//productsName = oldProducts;
-			}
-		}
-		if(!foundWarehouse) {
-			System.out.println("No such warehouse exists!");
-			Scanner in = new Scanner (System.in);
-			String input = in.next();
-			checkWarehouse(input);
-		}
-	}
 }

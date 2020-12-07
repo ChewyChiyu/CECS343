@@ -1,1 +1,2 @@
-Manuel,computer,a,Los Angeles,Long Beach,CA,50,90015,60.0,10,8,1,0,1607306228115
+Jake,hammer,John,1250 bell,Long,CA,200,90840,2000.0,0,8,0,0,1607306879378
+Manuel,afijhsgsijg,a,Los Angeles,Long Beach,CA,50,90015,60.0,10,8,1,0,1607306228115
