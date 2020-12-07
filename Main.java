@@ -96,7 +96,7 @@ public class Main {
 			    			int deliveryChargeCost = CheckInput.getInt();
 			    			System.out.println();
 			    			
-			    			System.out.println("Input tax charge:\n");
+			    			System.out.println("Input tax %:\n");
 			    			int salesTax = CheckInput.getInt();
 			    			System.out.println();
 			    			

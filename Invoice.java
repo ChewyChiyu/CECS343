@@ -58,7 +58,7 @@ public class Invoice{
 	public void setDeliveryCharge(int delivery) { deliveryCharge = delivery; }
 	public void setTimeStamp(long time) { timeStamp = time; }
 	
-	public String toString(){ return "name: " + name + " productName: " + productName + " address: " + address; }
+	public String toString(){ return "name: " + name + " productName: " + productName + " address: " + address +", " + zipCode; }
 	public String getData(){ return name + "," + productName + "," + salespersonName + "," + address + "," + quantityBuying + "," + zipCode + "," + bill + "," + deliveryChargeCost + "," + salesTax + "," + invoicePaid + "," + deliveryCharge + "," + timeStamp; }
 	public boolean equals(Invoice o){ return name.equals(o.name); }
 
