@@ -136,157 +136,168 @@ public class Main {
 			    			String name = CheckInput.getString();
 			    			
 			    			ArrayList<Invoice> edit = Database.getDatabase().selectInvoice();
+			    			
+			    			Invoice dummy = null;
 			    			int num = 0;
 			    			for(int i = 0; i < edit.size(); i++) {
 			    				if (edit.get(i).getName().equals(name)) {
 			    					num = i;
+			    					dummy = edit.get(num);
+			    					System.out.println("Invoice: " + dummy.toString());
 			    				}
 			    			}
-			    			boolean editInvoiceMenu = true;
-			    			while(editInvoiceMenu) {
-			    				System.out.println("What do you want to edit?\n");
-			    				System.out.println("1. Name of Product \n2. Name of Salesperson \n3. Address \n4. City \n5. State \n6. Quatity of Product \n7. Zip Code \n8. Bill \n9. Delivery Charge Cost \n10. Sales Tax \n11. Is Invoice Paid? \n12. Was it deliver? \n13. Timestamp \n14. Go back");
-			    				int editChoice = CheckInput.getIntRange(1, 14);
-			    				if (editChoice == 1) {
-			    					System.out.println("Input new name of product:");
-			    					String productName = CheckInput.getString();
-			    					System.out.println();
-			    					edit.get(num).setProductName(productName);
-			    					Database.getDatabase().delete(edit.get(num));
-			    					Database.getDatabase().add(edit.get(num));
-			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
-			    				}
-			    				if (editChoice == 2) {
-			    					System.out.println("Input new name of salespersonName:");
-			    					String salespersonName = CheckInput.getString();
-			    					System.out.println();
-			    					edit.get(num).setSalespersonName(salespersonName);
-			    					Database.getDatabase().delete(edit.get(num));
-			    					Database.getDatabase().add(edit.get(num));
-			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
-			    				}	
-			    				if (editChoice == 3) {
-			    					System.out.println("Input new billing address of customer:");
-			    					String address = CheckInput.getString();
-			    					System.out.println();
-			    					edit.get(num).setAddress(address);
-			    					Database.getDatabase().delete(edit.get(num));
-			    					Database.getDatabase().add(edit.get(num));
-			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
-			    				}
-			    				if (editChoice == 4) {
-			    					System.out.println("Input new city of customer:");
-			    					String city = CheckInput.getString();
-			    					System.out.println();
-			    					edit.get(num).setCity(city);
-			    					Database.getDatabase().delete(edit.get(num));
-			    					Database.getDatabase().add(edit.get(num));
-			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
-			    				}
-			    				if (editChoice == 5) {
-			    					System.out.println("Input new billing address of customer:");
-			    					String state = CheckInput.getString();
-			    					System.out.println();
-			    					edit.get(num).setState(state);
-			    					Database.getDatabase().delete(edit.get(num));
-			    					Database.getDatabase().add(edit.get(num));
-			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
-			    				}
-			    				if (editChoice == 6) {
-			    					System.out.println("Input new quantity of the product:");
-			    					int quantityBuying = CheckInput.getInt();
-			    					System.out.println();
-			    					edit.get(num).setQuantityBuying(quantityBuying);
-			    					Database.getDatabase().delete(edit.get(num));
-			    					Database.getDatabase().add(edit.get(num));
-			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
-			    				}
-			    				if (editChoice == 7) {
-			    					System.out.println("Input new zip code of customer:");
-			    					int zipCode = CheckInput.getInt();
-			    					System.out.println();
-			    					edit.get(num).setZipCode(zipCode);
-			    					Database.getDatabase().delete(edit.get(num));
-			    					Database.getDatabase().add(edit.get(num));
-			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
-			    				}
-			    				if (editChoice == 8) {
-			    					System.out.println("Input 1 to deduct invoice or 0 to charge:");
-			    					int invoiceEdit = CheckInput.getIntRange(0, 1);
-			    					System.out.println();
-			    					if (invoiceEdit == 1) {
-			    						long time = edit.get(num).getTimeStamp();
-			    						if (edit.get(num).getInvoicePaid() == 1) {
-			    							long tenDays = 864000000;
-			    							if (time < tenDays) {
-			    								double newBill = edit.get(num).getBill() - (edit.get(num).getBill() * 0.01);
-			    								edit.get(num).setBill(newBill);
-			    							}
-			    						}
-			    					}
-			    					if (invoiceEdit == 0) {
-			    						if (edit.get(num).getInvoicePaid() == 0) {
-			    							long time = edit.get(num).getTimeStamp();
-			    							long thirtyDays = 2592000000l;
-			    							if (time > thirtyDays) {
-			    								double newBill = edit.get(num).getBill() + (edit.get(num).getBill() * 0.02);
-			    								edit.get(num).setBill(newBill);
-			    							}
-			    						}
-			    					}
-			    					Database.getDatabase().delete(edit.get(num));
-			    					Database.getDatabase().add(edit.get(num));
-			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
-			    				}
-			    				if (editChoice == 9) {
-			    					System.out.println("Input new delivery charge:");
-			    					int deliveryChargeCost = CheckInput.getInt();
-					    			System.out.println();
-			    					edit.get(num).setDeliveryChargeCost(deliveryChargeCost);
-			    					Database.getDatabase().delete(edit.get(num));
-			    					Database.getDatabase().add(edit.get(num));
-			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
-			    				}
-			    				if (editChoice == 10) {
-			    					System.out.println("Input new tax charge:");
-			    					int salesTax = CheckInput.getInt();
-			    					System.out.println();
-			    					int newSalesTax = edit.get(num).getSalesTax() + salesTax;
-			    					edit.get(num).setSalesTax(newSalesTax);
-			    					Database.getDatabase().delete(edit.get(num));
-			    					Database.getDatabase().add(edit.get(num));
-			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
-			    				}
-			    				if (editChoice == 11) {
-			    					System.out.println("Input Y if invoice was paid or N if invoice was not paid:");
-			    					int invoicePaid = CheckInput.getYesNo();
-			    					System.out.println();
-			    					edit.get(num).setInvoicePaid(invoicePaid);
-			    					Database.getDatabase().delete(edit.get(num));
-			    					Database.getDatabase().add(edit.get(num));
-			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
-			    				}
-			    				if (editChoice == 12) {
-			    					System.out.println("Input Y if deliver or N if not deliver:");
-			    					int deliveryCharge = CheckInput.getYesNo();
-			    					System.out.println();
-			    					edit.get(num).setDeliveryCharge(deliveryCharge);
-			    					Database.getDatabase().delete(edit.get(num));
-			    					Database.getDatabase().add(edit.get(num));
-			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
-			    				}
-			    				if (editChoice == 13) {
-			    					System.out.println("Input date of invoice:");
-			    					long timestamp = System.currentTimeMillis();
-			    					System.out.println();
-			    					edit.get(num).setTimeStamp(timestamp);
-			    					Database.getDatabase().delete(edit.get(num));
-			    					Database.getDatabase().add(edit.get(num));
-			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
-			    				}
-			    				if (editChoice == 14) {
-			    					editInvoiceMenu = false;
-			    				}
+			    			
+			    			//Invoice not found
+			    			if (dummy == null) {
+			    				System.out.println("Invoice not found.\n");
+			    			}
+			    			else {
+				    			boolean editInvoiceMenu = true;
+				    			while(editInvoiceMenu) {
+				    				System.out.println("What do you want to edit?\n");
+				    				System.out.println("1. Name of Product \n2. Name of Salesperson \n3. Address \n4. City \n5. State \n6. Quatity of Product \n7. Zip Code \n8. Bill \n9. Delivery Charge Cost \n10. Sales Tax \n11. Is Invoice Paid? \n12. Was it deliver? \n13. Timestamp \n14. Go back");
+				    				int editChoice = CheckInput.getIntRange(1, 14);
+				    				if (editChoice == 1) {
+				    					System.out.println("Input new name of product:");
+				    					String productName = CheckInput.getString();
+				    					System.out.println();
+				    					edit.get(num).setProductName(productName);
+				    					Database.getDatabase().delete(edit.get(num));
+				    					Database.getDatabase().add(edit.get(num));
+				    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
+				    				}
+				    				if (editChoice == 2) {
+				    					System.out.println("Input new name of salespersonName:");
+				    					String salespersonName = CheckInput.getString();
+				    					System.out.println();
+				    					edit.get(num).setSalespersonName(salespersonName);
+				    					Database.getDatabase().delete(edit.get(num));
+				    					Database.getDatabase().add(edit.get(num));
+				    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
+				    				}	
+				    				if (editChoice == 3) {
+				    					System.out.println("Input new billing address of customer:");
+				    					String address = CheckInput.getString();
+				    					System.out.println();
+				    					edit.get(num).setAddress(address);
+				    					Database.getDatabase().delete(edit.get(num));
+				    					Database.getDatabase().add(edit.get(num));
+				    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
+				    				}
+				    				if (editChoice == 4) {
+				    					System.out.println("Input new city of customer:");
+				    					String city = CheckInput.getString();
+				    					System.out.println();
+				    					edit.get(num).setCity(city);
+				    					Database.getDatabase().delete(edit.get(num));
+				    					Database.getDatabase().add(edit.get(num));
+				    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
+				    				}
+				    				if (editChoice == 5) {
+				    					System.out.println("Input new billing address of customer:");
+				    					String state = CheckInput.getString();
+				    					System.out.println();
+				    					edit.get(num).setState(state);
+				    					Database.getDatabase().delete(edit.get(num));
+				    					Database.getDatabase().add(edit.get(num));
+				    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
+				    				}
+				    				if (editChoice == 6) {
+				    					System.out.println("Input new quantity of the product:");
+				    					int quantityBuying = CheckInput.getInt();
+				    					System.out.println();
+				    					edit.get(num).setQuantityBuying(quantityBuying);
+				    					Database.getDatabase().delete(edit.get(num));
+				    					Database.getDatabase().add(edit.get(num));
+				    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
+				    				}
+				    				if (editChoice == 7) {
+				    					System.out.println("Input new zip code of customer:");
+				    					int zipCode = CheckInput.getInt();
+				    					System.out.println();
+				    					edit.get(num).setZipCode(zipCode);
+				    					Database.getDatabase().delete(edit.get(num));
+				    					Database.getDatabase().add(edit.get(num));
+				    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
+				    				}
+				    				if (editChoice == 8) {
+				    					System.out.println("Input 1 to deduct invoice or 0 to charge:");
+				    					int invoiceEdit = CheckInput.getIntRange(0, 1);
+				    					System.out.println();
+				    					if (invoiceEdit == 1) {
+				    						long time = edit.get(num).getTimeStamp();
+				    						if (edit.get(num).getInvoicePaid() == 1) {
+				    							long tenDays = 864000000;
+				    							if (time < tenDays) {
+				    								double newBill = edit.get(num).getBill() - (edit.get(num).getBill() * 0.01);
+				    								edit.get(num).setBill(newBill);
+				    							}
+				    						}
+				    					}
+				    					if (invoiceEdit == 0) {
+				    						if (edit.get(num).getInvoicePaid() == 0) {
+				    							long time = edit.get(num).getTimeStamp();
+				    							long thirtyDays = 2592000000l;
+				    							if (time > thirtyDays) {
+				    								double newBill = edit.get(num).getBill() + (edit.get(num).getBill() * 0.02);
+				    								edit.get(num).setBill(newBill);
+				    							}
+				    						}
+				    					}
+				    					Database.getDatabase().delete(edit.get(num));
+				    					Database.getDatabase().add(edit.get(num));
+				    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
+				    				}
+				    				if (editChoice == 9) {
+				    					System.out.println("Input new delivery charge:");
+				    					int deliveryChargeCost = CheckInput.getInt();
+						    			System.out.println();
+				    					edit.get(num).setDeliveryChargeCost(deliveryChargeCost);
+				    					Database.getDatabase().delete(edit.get(num));
+				    					Database.getDatabase().add(edit.get(num));
+				    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
+				    				}
+				    				if (editChoice == 10) {
+				    					System.out.println("Input new tax charge:");
+				    					int salesTax = CheckInput.getInt();
+				    					System.out.println();
+				    					int newSalesTax = edit.get(num).getSalesTax() + salesTax;
+				    					edit.get(num).setSalesTax(newSalesTax);
+				    					Database.getDatabase().delete(edit.get(num));
+				    					Database.getDatabase().add(edit.get(num));
+				    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
+				    				}
+				    				if (editChoice == 11) {
+				    					System.out.println("Input Y if invoice was paid or N if invoice was not paid:");
+				    					int invoicePaid = CheckInput.getYesNo();
+				    					System.out.println();
+				    					edit.get(num).setInvoicePaid(invoicePaid);
+				    					Database.getDatabase().delete(edit.get(num));
+				    					Database.getDatabase().add(edit.get(num));
+				    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
+				    				}
+				    				if (editChoice == 12) {
+				    					System.out.println("Input Y if deliver or N if not deliver:");
+				    					int deliveryCharge = CheckInput.getYesNo();
+				    					System.out.println();
+				    					edit.get(num).setDeliveryCharge(deliveryCharge);
+				    					Database.getDatabase().delete(edit.get(num));
+				    					Database.getDatabase().add(edit.get(num));
+				    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
+				    				}
+				    				if (editChoice == 13) {
+				    					System.out.println("Input date of invoice:");
+				    					long timestamp = System.currentTimeMillis();
+				    					System.out.println();
+				    					edit.get(num).setTimeStamp(timestamp);
+				    					Database.getDatabase().delete(edit.get(num));
+				    					Database.getDatabase().add(edit.get(num));
+				    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
+				    				}
+				    				if (editChoice == 14) {
+				    					editInvoiceMenu = false;
+				    				}
+				    			}
 			    			}
 			    		}
 			    		if(invoiceMenuChoice == 3) {
