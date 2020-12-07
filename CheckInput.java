@@ -100,29 +100,6 @@ public class CheckInput {
 		return input;
 	}
 	 
-	public static String getValidCustomerName() {
-		boolean valid = false;
-		Scanner in = new Scanner( System.in );
-		String input = in.nextLine();
-		Invoice invoiceCheck = null;
-		while(!valid) {
-			ArrayList<Invoice> invoicesDB = Database.getDatabase().selectInvoice();
-			for (int i = 0; i < invoicesDB.size(); i++) {
-				if (invoicesDB.get(i).getName().equalsIgnoreCase(input)) {
-					invoiceCheck = invoicesDB.get(i);
-					if(invoiceCheck.getName().equalsIgnoreCase(input)) {
-						System.out.println("Found the product in Database, Enter a new product name");
-						//in.next();
-						input = getValidCustomerName();
-							
-					}
-				}
-			}
-		//System.out.println("leaving loop");
-		valid = true;
-		}
-		return input;
-	}
 	//Checks if warehouse exist already in Database. If does dont accept it and ask for new name
 
 	public static String getValidWarehouseName() {
