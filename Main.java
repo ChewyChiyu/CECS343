@@ -178,7 +178,7 @@ public class Main {
 			    					System.out.println("Input new city of customer:");
 			    					String city = CheckInput.getString();
 			    					System.out.println();
-			    					edit.get(num).setAddress(city);
+			    					edit.get(num).setCity(city);
 			    					Database.getDatabase().delete(edit.get(num));
 			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
@@ -187,7 +187,7 @@ public class Main {
 			    					System.out.println("Input new billing address of customer:");
 			    					String state = CheckInput.getString();
 			    					System.out.println();
-			    					edit.get(num).setAddress(state);
+			    					edit.get(num).setState(state);
 			    					Database.getDatabase().delete(edit.get(num));
 			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
