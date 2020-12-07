@@ -20,16 +20,18 @@ int salesTax: tax to be charged for the purchase
 
 public class Invoice{
 
-	private String name, productName, salespersonName, address, state, city;
+	private String name, productName, salespersonName, address, city, state;
 	private int quantityBuying, zipCode, deliveryChargeCost, salesTax, invoicePaid, deliveryCharge;;
 	private double bill;
 	private long timeStamp;
 
-	public Invoice(String name, String productName, String salespersonName, String address, String state, String city, int quantityBuying, int zipCode, double bill, int deliveryChargeCost, int salesTax, int invoicePaid, int deliveryCharge, long timeStamp){
+	public Invoice(String name, String productName, String salespersonName, String address, String city, String state, int quantityBuying, int zipCode, double bill, int deliveryChargeCost, int salesTax, int invoicePaid, int deliveryCharge, long timeStamp){
 		this.name = name;
 		this.productName = productName;
 		this.salespersonName = salespersonName;
 		this.address = address;
+		this.state = state;
+		this.city = city;
 		this.quantityBuying = quantityBuying;
 		this.zipCode = zipCode;
 		this.bill = bill;
@@ -38,8 +40,6 @@ public class Invoice{
 		this.invoicePaid = invoicePaid;
 		this.deliveryCharge = deliveryCharge;
 		this.timeStamp = timeStamp;
-		this.state = state;
-		this.city = city;
 	}
 	
 	public String getName() { return name; }
@@ -51,6 +51,8 @@ public class Invoice{
 	public void setProductName(String product) { productName = product; }
 	public void setSalespersonName(String salesperson) { salespersonName = salesperson; }
 	public void setAddress(String customerAddress) { address = customerAddress; }
+	public void setCity(String customerCity) { city = customerCity; }
+	public void setState(String customerState) { state = customerState; }
 	public void setQuantityBuying(int quantity) { quantityBuying = quantity; }
 	public void setZipCode(int customerZipCode) { zipCode = customerZipCode; }
 	public void setBill(double invoiceBill) { bill = invoiceBill; }

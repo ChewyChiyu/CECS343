@@ -145,7 +145,7 @@ public class Main {
 			    			boolean editInvoiceMenu = true;
 			    			while(editInvoiceMenu) {
 			    				System.out.println("What do you want to edit?\n");
-			    				System.out.println("1. Name of Product \n2. Name of Salesperson \n3. Address \n4. Quatity of Product \n5. Zip Code \n6. Bill \n7. Delivery Charge Cost \n8. Sales Tax \n9. Is Invoice Paid? \n10. Was it deliver? \n11. Timestamp \n12. Go back");
+			    				System.out.println("1. Name of Product \n2. Name of Salesperson \n3. Address \n4. City \n5. State \n6. Quatity of Product \n7. Zip Code \n8. Bill \n9. Delivery Charge Cost \n10. Sales Tax \n11. Is Invoice Paid? \n12. Was it deliver? \n13. Timestamp \n14. Go back");
 			    				int editChoice = CheckInput.getIntRange(1, 12);
 			    				if (editChoice == 1) {
 			    					System.out.println("Input new name of product:");
@@ -175,6 +175,24 @@ public class Main {
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
 			    				if (editChoice == 4) {
+			    					System.out.println("Input new city of customer:");
+			    					String city = CheckInput.getString();
+			    					System.out.println();
+			    					edit.get(num).setAddress(city);
+			    					Database.getDatabase().delete(edit.get(num));
+			    					Database.getDatabase().add(edit.get(num));
+			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
+			    				}
+			    				if (editChoice == 5) {
+			    					System.out.println("Input new billing address of customer:");
+			    					String state = CheckInput.getString();
+			    					System.out.println();
+			    					edit.get(num).setAddress(state);
+			    					Database.getDatabase().delete(edit.get(num));
+			    					Database.getDatabase().add(edit.get(num));
+			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
+			    				}
+			    				if (editChoice == 6) {
 			    					System.out.println("Input new quantity of the product:");
 			    					int quantityBuying = CheckInput.getInt();
 			    					System.out.println();
@@ -183,7 +201,7 @@ public class Main {
 			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
-			    				if (editChoice == 5) {
+			    				if (editChoice == 7) {
 			    					System.out.println("Input new zip code of customer:");
 			    					int zipCode = CheckInput.getInt();
 			    					System.out.println();
@@ -192,7 +210,7 @@ public class Main {
 			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
-			    				if (editChoice == 6) {
+			    				if (editChoice == 8) {
 			    					System.out.println("Input 1 to deduct invoice or 0 to charge:");
 			    					int invoiceEdit = CheckInput.getIntRange(0, 1);
 			    					System.out.println();
@@ -220,7 +238,7 @@ public class Main {
 			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
-			    				if (editChoice == 7) {
+			    				if (editChoice == 9) {
 			    					System.out.println("Input new delivery charge:");
 			    					int deliveryChargeCost = CheckInput.getInt();
 					    			System.out.println();
@@ -229,7 +247,7 @@ public class Main {
 			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
-			    				if (editChoice == 8) {
+			    				if (editChoice == 10) {
 			    					System.out.println("Input new tax charge:");
 			    					int salesTax = CheckInput.getInt();
 			    					System.out.println();
@@ -239,7 +257,7 @@ public class Main {
 			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
-			    				if (editChoice == 9) {
+			    				if (editChoice == 11) {
 			    					System.out.println("Input Y if invoice was paid or N if invoice was not paid:");
 			    					int invoicePaid = CheckInput.getYesNo();
 			    					System.out.println();
@@ -248,7 +266,7 @@ public class Main {
 			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
-			    				if (editChoice == 10) {
+			    				if (editChoice == 12) {
 			    					System.out.println("Input Y if deliver or N if not deliver:");
 			    					int deliveryCharge = CheckInput.getYesNo();
 			    					System.out.println();
@@ -257,7 +275,7 @@ public class Main {
 			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
-			    				if (editChoice == 11) {
+			    				if (editChoice == 13) {
 			    					System.out.println("Input date of invoice:");
 			    					long timestamp = System.currentTimeMillis();
 			    					System.out.println();
@@ -266,7 +284,7 @@ public class Main {
 			    					Database.getDatabase().add(edit.get(num));
 			    					System.out.println("Invoice was changed!\n" + edit.get(num).getData() + "\n");
 			    				}
-			    				if (editChoice == 12) {
+			    				if (editChoice == 14) {
 			    					editInvoiceMenu = false;
 			    				}
 			    			}
