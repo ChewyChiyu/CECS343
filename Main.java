@@ -92,6 +92,10 @@ public class Main {
 			    			double bill = CheckInput.getInt();
 			    			System.out.println();
 			    			
+			    			System.out.println("Input Y if deliver or N if not deliver:");
+			    			int deliveryCharge = CheckInput.getYesNo();
+			    			System.out.println();
+			    			
 			    			System.out.println("Input deliver charge if product delivered:");
 			    			int deliveryChargeCost = CheckInput.getInt();
 			    			System.out.println();
@@ -100,12 +104,8 @@ public class Main {
 			    			int salesTax = CheckInput.getInt();
 			    			System.out.println();
 			    			
-			    			System.out.println("Input Y if invoice was paid or N if invoice was not paid:");
+			    			System.out.println("Input Y if invoice was paid in full or N if invoice was not paid:");
 			    			int invoicePaid = CheckInput.getYesNo();
-			    			System.out.println();
-			    			
-			    			System.out.println("Input Y if deliver or N if not deliver:");
-			    			int deliveryCharge = CheckInput.getYesNo();
 			    			System.out.println();
 			    			
 			    			System.out.println("Input date of invoice:\n");

@@ -1,1 +1,2 @@
 Jake,Drill,John,1250 Bellflower Blvd Long Beach CA,10,90840,200.0,10,8,0,1,1607302895146
+Daniel Winter,TV,John Do,1250 Bellflower Blvd, Long Beach, CA,100,90840,10000.0,0,8,0,0,1607303542129
